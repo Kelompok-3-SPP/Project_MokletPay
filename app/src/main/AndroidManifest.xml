@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.projectukk.project_mokletpay">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AplikasiPembayaranSekolah"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.BioSiswaActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.ProfilKepalaSekolahActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.SplashActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.admintransaksi.DetailApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.admintransaksi.ApprovalActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.admintransaksi.RekapitulasiPembayaranActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.transaksi.DetailTransaksi"
+            android:exported="true" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.transaksi.TambahPembayaranTransaksiInvoice"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.siswa.ListSemuaSiswaAdmin"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.akun.UpdateAkunActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.akun.ListAkunActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.transaksi.TambahPembayaranTransaksi"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.periode.TambahPeriode"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.periode.ListPeriodeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.menu.MenuKepala"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.InformasiActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.ProfilActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.siswa.ListSiswa"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.kelas.UpdateKelas"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.kelas.TambahKelas"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.kelas.MainKelas"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.siswa.UpdateSiswa"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.siswa.TambahSiswa"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.menu.MainSiswa"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.menu.MainAdmin"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
