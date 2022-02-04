@@ -6,142 +6,77 @@
     android:layout_height="match_parent"
     tools:context=".auth.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/img"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="50dp"
-        android:text="Madrasah Ibtidaiyah Al-Hudy"
-        android:textSize="@dimen/fontsize18"
-        android:textStyle="bold" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:padding="10dp"
-        android:src="@drawable/logo" />
+        <TextView
+            android:id="@+id/tebel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/bold"
+            android:text="Pilih Status Anda"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text_choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Pilih Akun Kamu : "
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/penjelas1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reguler"
+            android:text="Pilih salah satu opsi untuk"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tebel" />
+
+        <TextView
+            android:id="@+id/penjelas2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/reguler"
+            android:text="masuk pada aplikasi moklet pay"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/penjelas1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_below="@+id/text_choose"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/cv1"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/btnSiswa"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@drawable/btnuser" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_account" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:text="Admin"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/cv2"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/btnPetugas"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@drawable/btnpetugas"
+            android:layout_marginTop="24dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_siswa" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:text="Siswa"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/cv3"
-            android:layout_width="0dp"
+        <ImageButton
+            android:id="@+id/btnAdmin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:background="@drawable/btnadmin"
+            android:layout_marginTop="24dp"/>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:padding="20dp"
-                    android:src="@drawable/ic_kepala_madrasah" />
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="Kepala Madrasah"
-                android:textStyle="bold" />
-        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

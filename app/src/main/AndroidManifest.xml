@@ -24,9 +24,7 @@
         <activity
             android:name="com.projectukk.project_mokletpay.auth.ProfilKepalaSekolahActivity"
             android:exported="true" />
-        <activity
-            android:name="com.projectukk.project_mokletpay.auth.SplashActivity"
-            android:exported="true" />
+
         <activity
             android:name="com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity"
             android:exported="true" />
@@ -104,7 +102,11 @@
             android:exported="false" />
         <activity
             android:name="com.projectukk.project_mokletpay.auth.MainActivity"
-            android:exported="true">
+            android:exported="true"/>
+        <activity
+            android:name="com.projectukk.project_mokletpay.auth.SplashActivity"
+            android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

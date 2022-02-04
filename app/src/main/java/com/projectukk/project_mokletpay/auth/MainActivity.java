@@ -2,41 +2,38 @@ package com.projectukk.project_mokletpay.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.projectukk.project_mokletpay.R;
 
 public class MainActivity extends AppCompatActivity {
-    private LinearLayout cv1, cv2, cv3;
+    private ImageButton btnSiswa, btnPetugas, btnAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cv1 = findViewById(R.id.cv1);
-        cv2 = findViewById(R.id.cv2);
-        cv3 = findViewById(R.id.cv3);
+        btnSiswa = findViewById(R.id.btnSiswa);
+        btnPetugas = findViewById(R.id.btnPetugas);
+        btnAdmin = findViewById(R.id.btnAdmin);
 
-        cv1.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            i.putExtra("status_login", "1");
-            startActivity(i);
-            finish();
-        });
-        cv2.setOnClickListener(v -> {
+        btnSiswa.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.putExtra("status_login", "3");
             startActivity(i);
-            finish();
         });
-        cv3.setOnClickListener(v -> {
+        btnPetugas.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.putExtra("status_login", "2");
             startActivity(i);
-            finish();
+        });
+        btnAdmin.setOnClickListener(v -> {
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            i.putExtra("status_login", "1");
+            startActivity(i);
         });
     }
 }

@@ -23,7 +23,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo_mokletpay" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_nama"
