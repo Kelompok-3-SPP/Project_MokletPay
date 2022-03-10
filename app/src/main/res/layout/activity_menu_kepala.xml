@@ -105,7 +105,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Rekapitulasi SPP"
+                android:text="Pemabayaran SPP"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </RelativeLayout>

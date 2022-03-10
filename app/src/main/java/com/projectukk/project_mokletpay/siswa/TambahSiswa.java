@@ -32,7 +32,7 @@ public class TambahSiswa extends AppCompatActivity {
     CekKoneksi koneksi = new CekKoneksi();
     private TextView et_cari;
     String idkelas;
-    private EditText et_nis, et_nama, et_jeniskelamin, et_alamat, et_telp, et_nama_ayah, et_nama_ibu;
+    private EditText et_nis, et_nama, et_jeniskelamin, et_alamat, et_telp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,6 @@ public class TambahSiswa extends AppCompatActivity {
         et_nama = findViewById(R.id.et_nama);
         et_jeniskelamin = findViewById(R.id.et_jeniskelamin);
         et_alamat = findViewById(R.id.et_alamat);
-        et_nama_ayah = findViewById(R.id.et_nama_ayah);
-        et_nama_ibu = findViewById(R.id.et_nama_ibu);
         et_telp = findViewById(R.id.et_telp);
 
         Intent i = getIntent();
@@ -78,8 +76,6 @@ public class TambahSiswa extends AppCompatActivity {
                 .addQueryParameter("jenis_kelamin", et_jeniskelamin.getText().toString().trim())
                 .addQueryParameter("alamat", et_alamat.getText().toString().trim())
                 .addQueryParameter("notelp", et_telp.getText().toString().trim())
-                .addQueryParameter("nama_ayah", et_nama_ayah.getText().toString().trim())
-                .addQueryParameter("nama_ibu", et_nama_ibu.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

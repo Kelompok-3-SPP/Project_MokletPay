@@ -33,7 +33,7 @@ public class BioSiswaActivity extends AppCompatActivity {
     CekKoneksi koneksi = new CekKoneksi();
 
     private LinearLayout ly00, ly11;
-    private EditText et_nama, et_username, et_alamat, et_telp, et_ayah, et_ibu, et_kelas;
+    private EditText et_nama, et_username, et_alamat, et_telp, et_kelas;
     String idsiswa;
 
     @Override
@@ -54,8 +54,6 @@ public class BioSiswaActivity extends AppCompatActivity {
         et_username = findViewById(R.id.et_username);
         et_alamat = findViewById(R.id.et_alamat);
         et_telp = findViewById(R.id.et_telp);
-        et_ayah = findViewById(R.id.et_ayah);
-        et_ibu = findViewById(R.id.et_ibu);
         et_kelas = findViewById(R.id.et_kelas);
 
         ly00.setVisibility(View.VISIBLE);
@@ -90,8 +88,6 @@ public class BioSiswaActivity extends AppCompatActivity {
                         et_username.setText(response.optString("nis"));
                         et_alamat.setText(response.optString("alamat"));
                         et_telp.setText(response.optString("notelp"));
-                        et_ayah.setText(response.optString("nama_ayah"));
-                        et_ibu.setText(response.optString("nama_ibu"));
                         et_kelas.setText(response.optString("nama_kelas"));
 
                         ly00.setVisibility(View.GONE);
@@ -122,8 +118,6 @@ public class BioSiswaActivity extends AppCompatActivity {
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
                 .addQueryParameter("alamat", et_alamat.getText().toString().trim())
                 .addQueryParameter("telp", et_telp.getText().toString().trim())
-                .addQueryParameter("ayah", et_ayah.getText().toString().trim())
-                .addQueryParameter("ibu", et_ibu.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {

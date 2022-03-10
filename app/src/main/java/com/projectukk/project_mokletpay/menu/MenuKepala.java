@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity;
 import com.projectukk.project_mokletpay.auth.ProfilKepalaSekolahActivity;
 import com.projectukk.project_mokletpay.helper.SessionManager;
+import com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran;
 
 import java.io.File;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class MenuKepala extends AppCompatActivity {
             x.putExtra("idsiswa", iduser);
             startActivity(x);
         });
-        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MenuKepala.this, RekapitulasiAdminActivity.class)));
+        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MenuKepala.this, TransaksiPembayaran.class)));
     }
 
     private void logoutUser() {
