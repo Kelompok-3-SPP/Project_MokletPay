@@ -115,7 +115,7 @@
             android:name=".auth.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.SplashActivity"
+            android:name=".intro.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

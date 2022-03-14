@@ -1,4 +1,4 @@
-package com.projectukk.project_mokletpay.auth;
+package com.projectukk.project_mokletpay.intro;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    intent = new Intent(SplashActivity.this, OnboardingActivity.class);
+                    intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
                     startActivity(intent);
                     finish();
                 }
