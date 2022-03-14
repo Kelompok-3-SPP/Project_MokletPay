@@ -19,6 +19,9 @@
         android:theme="@style/Theme.AplikasiPembayaranSekolah"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".auth.OnboardingActivity"
+            android:exported="true" />
+        <activity
             android:name=".transaksi.TambahPembayaranAdminActivity"
             android:exported="true" />
         <activity

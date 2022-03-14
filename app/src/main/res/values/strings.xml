@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Aplikasi Pembayaran Sekolah</string>
+    //Headings OnBoarding
+    <string name="heading_one">Program Administrasi</string>
+    <string name="heading_two">Data Tervalidasi</string>
+    <string name="heading_three">Bayar Dimanasaja</string>
+
+    //Description OnBoarding
+    <string name="desc_one">Dari lembaga yang terpercaya dan berpengalaman</string>
+    <string name="desc_two">Data tervalidasi dan disimpan dengan aman.</string>
+    <string name="desc_three">Program administrasi sekolah tanpa batas ruang dan waktu.</string>
+
 </resources>
