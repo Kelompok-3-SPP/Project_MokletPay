@@ -19,94 +19,101 @@
         android:theme="@style/Theme.AplikasiPembayaranSekolah"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.BioSiswaActivity"
+            android:name=".transaksi.TambahPembayaranAdminActivity"
             android:exported="true" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.ProfilKepalaSekolahActivity"
-            android:exported="true" />
-
-        <activity
-            android:name="com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity"
+            android:name=".auth.BioSiswaAdminActivity"
             android:exported="true" />
         <activity
-            android:name="com.projectukk.project_mokletpay.admintransaksi.DetailApprovalActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.projectukk.project_mokletpay.admintransaksi.ApprovalActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.projectukk.project_mokletpay.admintransaksi.RekapitulasiPembayaranActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.projectukk.project_mokletpay.transaksi.DetailTransaksi"
+            android:name=".admintransaksi.SiswaPembayaran"
             android:exported="true" />
         <activity
-            android:name="com.projectukk.project_mokletpay.transaksi.TambahPembayaranTransaksiInvoice"
+            android:name=".auth.BioSiswaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".auth.ProfilPetugasActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admintransaksi.RekapitulasiAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admintransaksi.DetailApprovalActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.siswa.ListSemuaSiswaAdmin"
+            android:name=".admintransaksi.ApprovalActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.akun.UpdateAkunActivity"
+            android:name=".admintransaksi.RekapitulasiPembayaranActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.akun.ListAkunActivity"
+            android:name=".transaksi.DetailTransaksi"
+            android:exported="true" />
+        <activity
+            android:name=".transaksi.TambahPembayaranTransaksiInvoice"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.transaksi.TambahPembayaranTransaksi"
+            android:name=".siswa.ListSemuaSiswaAdmin"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.periode.TambahPeriode"
+            android:name=".akun.UpdateAkunActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.periode.ListPeriodeActivity"
+            android:name=".akun.ListAkunActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.menu.MenuKepala"
+            android:name=".transaksi.TambahPembayaranTransaksi"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran"
+            android:name=".periode.TambahPeriode"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.InformasiActivity"
+            android:name=".periode.ListPeriodeActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.ProfilActivity"
+            android:name=".menu.MainPetugas"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.siswa.ListSiswa"
+            android:name=".transaksi.TransaksiPembayaran"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.kelas.UpdateKelas"
+            android:name=".auth.InformasiActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.kelas.TambahKelas"
+            android:name=".auth.ProfilActivity"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.kelas.MainKelas"
+            android:name=".siswa.ListSiswa"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.siswa.UpdateSiswa"
+            android:name=".kelas.UpdateKelas"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.siswa.TambahSiswa"
+            android:name=".kelas.TambahKelas"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.menu.MainSiswa"
+            android:name=".kelas.MainKelas"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.menu.MainAdmin"
+            android:name=".siswa.UpdateSiswa"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.LoginActivity"
+            android:name=".siswa.TambahSiswa"
             android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.MainActivity"
-            android:exported="true"/>
+            android:name=".menu.MainSiswa"
+            android:exported="false" />
         <activity
-            android:name="com.projectukk.project_mokletpay.auth.SplashActivity"
-            android:exported="true" >
-
+            android:name=".menu.MainAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".auth.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".auth.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

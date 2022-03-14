@@ -15,24 +15,20 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimary"
             app:cardCornerRadius="0dp"
             app:cardElevation="2dp"
             tools:ignore="MissingConstraints">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:paddingBottom="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/ic_header_adddata">
-
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary">
 
                 <ImageView
                     android:id="@+id/back"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="20dp"
                     android:padding="5dp"
                     android:src="@drawable/ic_back"
                     app:tint="@color/white"
@@ -43,14 +39,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="20dp"
                     android:layout_toEndOf="@+id/back"
+                    android:background="@color/colorPrimary"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center_vertical"
                     android:text="Profil"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/fontsize18"
                     tools:ignore="Autofill,HardcodedText,TextFields" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -108,9 +103,9 @@
                         android:layout_centerInParent="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@+id/img_upload"
+                        app:boxStrokeColor="@color/black"
                         android:hint="Nama Siswa"
                         android:textColorHint="@color/black"
-                        app:boxStrokeColor="@color/black"
                         tools:ignore="HardcodedText">
 
                         <EditText
@@ -266,9 +261,9 @@
                     <TextView
                         android:id="@+id/text_simpan"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/button_effect"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_primary"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
                         android:text="Simpan"

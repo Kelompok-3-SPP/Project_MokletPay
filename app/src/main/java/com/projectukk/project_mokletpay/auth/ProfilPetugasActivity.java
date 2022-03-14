@@ -29,7 +29,7 @@ import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ProfilKepalaSekolahActivity extends AppCompatActivity {
+public class ProfilPetugasActivity extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
 
@@ -42,7 +42,7 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil_kepala_sekolah);
+        setContentView(R.layout.activity_profil_petugas);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -73,10 +73,10 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
             text_pass2.setVisibility(View.VISIBLE);
         });
         findViewById(R.id.text_simpan).setOnClickListener(v -> {
-            if (koneksi.isConnected(ProfilKepalaSekolahActivity.this)){
+            if (koneksi.isConnected(ProfilPetugasActivity.this)){
                 UpdateData();
             } else {
-                CustomDialog.noInternet(ProfilKepalaSekolahActivity.this);
+                CustomDialog.noInternet(ProfilPetugasActivity.this);
             }
         });
     }
@@ -84,7 +84,7 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
     private void LoadData() {
         customProgress.showProgress(this, false);
         AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
-                .addQueryParameter("TAG", "detail_kepala")
+                .addQueryParameter("TAG", "detail_petugas")
                 .addQueryParameter("idsiswa", idsiswa)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -105,11 +105,11 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(ProfilKepalaSekolahActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(ProfilPetugasActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(ProfilKepalaSekolahActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(ProfilPetugasActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
@@ -117,7 +117,7 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
 
     private void UpdateData() {
         AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
-                .addQueryParameter("TAG", "edit_kepala")
+                .addQueryParameter("TAG", "edit_petugas")
                 .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
                 .addQueryParameter("password", et_pass.getText().toString().trim())
@@ -126,7 +126,7 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        successDialog(ProfilKepalaSekolahActivity.this, response.optString("pesan"));
+                        successDialog(ProfilPetugasActivity.this, response.optString("pesan"));
                     }
 
                     @Override
@@ -135,11 +135,11 @@ public class ProfilKepalaSekolahActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(ProfilKepalaSekolahActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(ProfilPetugasActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(ProfilKepalaSekolahActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(ProfilPetugasActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });

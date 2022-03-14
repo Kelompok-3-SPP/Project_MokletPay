@@ -2,28 +2,28 @@ package com.projectukk.project_mokletpay.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
 
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.auth.ProfilKepalaSekolahActivity;
+import com.projectukk.project_mokletpay.auth.ProfilPetugasActivity;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran;
 
 import java.io.File;
 import java.util.HashMap;
 
-public class MenuKepala extends AppCompatActivity {
+public class MainPetugas extends AppCompatActivity {
     public SessionManager SessionManager;
     public static String iduser, username;
-    private AppCompatTextView text_nama;
+    private TextView text_nama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_kepala);
-        SessionManager = new SessionManager(MenuKepala.this);
+        setContentView(R.layout.activity_main_petugas);
+        SessionManager = new SessionManager(MainPetugas.this);
         SessionManager.checkLogin();
         HashMap<String, String> user = SessionManager.getUserDetails();
         iduser = user.get(SessionManager.KEY_ID);
@@ -36,12 +36,12 @@ public class MenuKepala extends AppCompatActivity {
             logoutUser();
         });
         findViewById(R.id.cv1).setOnClickListener(v -> {
-            Intent x = new Intent(MenuKepala.this, ProfilKepalaSekolahActivity.class);
+            Intent x = new Intent(MainPetugas.this, ProfilPetugasActivity.class);
             x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             x.putExtra("idsiswa", iduser);
             startActivity(x);
         });
-        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MenuKepala.this, TransaksiPembayaran.class)));
+        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MainPetugas.this, TransaksiPembayaran.class)));
     }
 
     private void logoutUser() {

@@ -22,7 +22,7 @@
             android:textColor="@color/colorRed"
             android:textSize="@dimen/fontsize18"
             android:textStyle="bold"
-            tools:text="Kelas Telo" />
+            tools:text="Angkatan" />
 
         <TextView
             android:id="@+id/text_bulan"
@@ -32,7 +32,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/fontsize18"
             android:textStyle="bold"
-            tools:text="Kelas Telo" />
+            tools:text="Bulan" />
 
         <TextView
             android:id="@+id/text_nominal"
@@ -42,7 +42,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/fontsize18"
             android:textStyle="bold"
-            tools:text="Kelas Telo" />
+            tools:text="Rp. 000.000" />
 
         <ImageView
             android:id="@+id/img_hapus"

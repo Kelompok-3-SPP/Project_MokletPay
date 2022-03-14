@@ -13,15 +13,12 @@ import com.projectukk.project_mokletpay.R;
 public class SplashActivity extends AppCompatActivity {
     Intent intent;
     ImageView img;
- //   TextView text, text2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         img = findViewById(R.id.img);
-       // text = findViewById(R.id.text);
-       // text2 = findViewById(R.id.text2);
 
         Thread timerThread = new Thread() {
             public void run() {

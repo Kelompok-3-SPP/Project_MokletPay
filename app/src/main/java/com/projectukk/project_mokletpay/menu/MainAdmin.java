@@ -2,16 +2,16 @@ package com.projectukk.project_mokletpay.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.admintransaksi.ApprovalActivity;
 import com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity;
-import com.projectukk.project_mokletpay.akun.ListAkunActivity;
+import com.projectukk.project_mokletpay.admintransaksi.SiswaPembayaran;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
@@ -26,11 +26,10 @@ public class MainAdmin extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
     public SessionManager SessionManager;
-    private AppCompatTextView text_nama;
+    private TextView text_nama;
     private AppCompatImageView img_logout;
     public static String iduser, username;
     private CardView cv1, cv2, cv3, cv4, cv5;
-    public static String idsekolah = "0001";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class MainAdmin extends AppCompatActivity {
         cv1.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, MainKelas.class)));
         cv2.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListSemuaSiswaAdmin.class)));
         cv3.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ApprovalActivity.class)));
-        cv4.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListAkunActivity.class)));
+        cv4.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, SiswaPembayaran.class)));
         cv5.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListPeriodeActivity.class)));
         findViewById(R.id.cv6).setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, RekapitulasiAdminActivity.class)));
     }

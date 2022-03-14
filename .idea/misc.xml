@@ -3,31 +3,54 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable-anydpi/ic_file.xml" value="0.290625" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15989583333333332" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable/bg_model_toolbar_back.xml" value="0.290625" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable/btn_primary.xml" value="0.290625" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable/button_effect.xml" value="0.290625" />
-        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_approval.xml" value="0.14375" />
-        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_bio_siswa.xml" value="0.14375" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable/circle_button.xml" value="0.290625" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/drawable/edittext_stroke_white.xml" value="0.290625" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_approval.xml" value="0.2" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_bio_siswa.xml" value="0.264" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_bio_siswa_admin.xml" value="0.27447916666666666" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_detail_approval.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_detail_transaksi.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_informasi.xml" value="0.21829710144927536" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_list_akun.xml" value="0.16530797101449277" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_list_periode.xml" value="0.16530797101449277" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_list_semua_siswa_admin.xml" value="0.14375" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_list_siswa.xml" value="0.27447916666666666" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_login_murid.xml" value="0.14375" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main_admin.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main_kelas.xml" value="0.21829710144927536" />
-        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main_siswa.xml" value="0.12" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main_petugas.xml" value="0.2658514492753623" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_main_siswa.xml" value="0.264" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_menu_kepala.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_profil.xml" value="0.21829710144927536" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_profil_kepala_sekolah.xml" value="0.27447916666666666" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_profil_petugas.xml" value="0.2658514492753623" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_rekapitulasi_admin.xml" value="0.27447916666666666" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_rekapitulasi_pembayaran.xml" value="0.27447916666666666" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_riwayat_transaksi.xml" value="0.21829710144927536" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_siswa_pembayaran.xml" value="0.27309782608695654" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_splash.xml" value="0.14375" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_tambah_kelas.xml" value="0.2658514492753623" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_tambah_pembayaran_transaksi.xml" value="0.21829710144927536" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_tambah_pembayaran_transaksi_invoice.xml" value="0.2586050724637681" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_tambah_periode.xml" value="0.2658514492753623" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_tambah_siswa.xml" value="0.27447916666666666" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_transaksi_pembayaran.xml" value="0.27309782608695654" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/activity_update_akun.xml" value="0.27447916666666666" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/custom_dialog_list_bulan.xml" value="0.16530797101449277" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/custom_layout_toolbar.xml" value="0.2658514492753623" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/list_kategori.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_akun.xml" value="0.21829710144927536" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_kelas.xml" value="0.21829710144927536" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_periode.xml" value="0.2658514492753623" />
         <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_siswa.xml" value="0.21829710144927536" />
-        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_transaksi.xml" value="0.14375" />
+        <entry key="..\:/ProjectAndroid/Project_MokletPay/app/src/main/res/layout/model_list_transaksi.xml" value="0.176" />
       </map>
     </option>
   </component>

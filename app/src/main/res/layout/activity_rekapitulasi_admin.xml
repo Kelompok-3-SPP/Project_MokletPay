@@ -87,9 +87,9 @@
                 <TextView
                     android:id="@+id/text_simpan"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/btn_primary"
+                    android:background="@drawable/button_effect"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="Lihat Laporan"
@@ -192,9 +192,9 @@
         <TextView
             android:id="@+id/text_tutup"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="56dp"
             android:layout_margin="10dp"
-            android:background="@drawable/btn_primary"
+            android:background="@drawable/button_effect"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:text="Tutup"

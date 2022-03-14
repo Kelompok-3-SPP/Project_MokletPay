@@ -2,10 +2,10 @@ package com.projectukk.project_mokletpay.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 
 import com.projectukk.project_mokletpay.R;
@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.HashMap;
 
 public class MainSiswa extends AppCompatActivity {
-    private AppCompatTextView text_nama;
+    private TextView text_nama;
     private AppCompatImageView img_logout;
     public SessionManager SessionManager;
     public static String iduser, username;

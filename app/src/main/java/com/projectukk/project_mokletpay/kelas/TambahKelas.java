@@ -23,7 +23,6 @@ import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
-import com.projectukk.project_mokletpay.menu.MainAdmin;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +59,6 @@ public class TambahKelas extends AppCompatActivity {
         customProgress.showProgress(this, false);
         AndroidNetworking.get(Connection.CONNECT + "spp_kelas.php")
                 .addQueryParameter("TAG", "tambah")
-                .addQueryParameter("idsekolah", MainAdmin.idsekolah)
                 .addQueryParameter("nama_kelas", et_nama.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()

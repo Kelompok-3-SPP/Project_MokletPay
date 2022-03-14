@@ -20,7 +20,7 @@ import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import com.projectukk.project_mokletpay.menu.MainAdmin;
 import com.projectukk.project_mokletpay.menu.MainSiswa;
-import com.projectukk.project_mokletpay.menu.MenuKepala;
+import com.projectukk.project_mokletpay.menu.MainPetugas;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     } else if (status_login.equals("3")){
                         LoginProsesSiswa(username, pass_login);
                     } else {
-                        LoginProsesKepala(username, pass_login);
+                        LoginProsesPetugas(username, pass_login);
                     }
                 } else {
                     CustomDialog.errorDialog(LoginActivity.this, "Data tidak boleh ada yang kosong.");
@@ -154,9 +154,9 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void LoginProsesKepala(final String username, final String pass_login) {
+    private void LoginProsesPetugas(final String username, final String pass_login) {
         customProgress.showProgress(this, false);
-        AndroidNetworking.get(Connection.CONNECT + "spp_login_kepala.php")
+        AndroidNetworking.get(Connection.CONNECT + "spp_login_Petugas.php")
                 .addQueryParameter("username", username)
                 .addQueryParameter("password", pass_login)
                 .setPriority(Priority.MEDIUM)
@@ -167,9 +167,9 @@ public class LoginActivity extends AppCompatActivity {
                         clearApplicationData();
                         SessionManager.createLoginSession(
                                 response.optString("idforeign"),
-                                response.optString("nama_kepala"),
+                                response.optString("nama_petugas"),
                                 response.optString("status_user"));
-                        Intent intent = new Intent(LoginActivity.this, MenuKepala.class);
+                        Intent intent = new Intent(LoginActivity.this, MainPetugas.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();

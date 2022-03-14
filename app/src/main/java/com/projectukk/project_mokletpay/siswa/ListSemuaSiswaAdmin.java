@@ -29,7 +29,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.auth.BioSiswaActivity;
+import com.projectukk.project_mokletpay.auth.BioSiswaAdminActivity;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
@@ -243,7 +243,7 @@ public class ListSemuaSiswaAdmin extends AppCompatActivity {
             holder.text_nis.setText(kelas.getNis());
             holder.text_level.setText(kelas.getNama_kelas());
             holder.cv.setOnClickListener(view -> {
-                Intent x = new Intent(mCtx, BioSiswaActivity.class);
+                Intent x = new Intent(mCtx, BioSiswaAdminActivity.class);
                 x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 x.putExtra("idsiswa", kelas.getIdsiswa());
                 mCtx.startActivity(x);

@@ -8,14 +8,19 @@
     tools:context=".kelas.MainKelas">
 
     <RelativeLayout
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="80dp"
+        android:paddingBottom="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_header_adddata">
+
 
         <ImageView
             android:id="@+id/back"
             android:layout_width="35dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="20dp"
             android:padding="5dp"
             android:src="@drawable/ic_back"
             app:tint="@color/white"
@@ -26,6 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/back"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_vertical"
@@ -40,7 +47,7 @@
             android:layout_height="35dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/bg_model_toolbar_back"
             android:padding="5dp"
             android:src="@drawable/ic_add"

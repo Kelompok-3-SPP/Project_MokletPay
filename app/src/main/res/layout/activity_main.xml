@@ -60,9 +60,10 @@
 
         <ImageButton
             android:id="@+id/btnSiswa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnuser" />
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btnsiswa" />
 
         <ImageButton
             android:id="@+id/btnPetugas"

@@ -1,12 +1,17 @@
 package com.projectukk.project_mokletpay.auth;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,7 +28,7 @@ import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BioSiswaActivity extends AppCompatActivity {
+public class BioSiswaAdminActivity extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
 
@@ -34,7 +39,7 @@ public class BioSiswaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bio_siswa);
+        setContentView(R.layout.activity_bio_siswa_admin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -55,9 +60,19 @@ public class BioSiswaActivity extends AppCompatActivity {
         ly11.setVisibility(View.GONE);
         LoadData();
 
-
+        actionButton();
     }
 
+    private void actionButton() {
+        findViewById(R.id.back).setOnClickListener(v -> finish());
+        findViewById(R.id.text_simpan).setOnClickListener(v -> {
+            if (koneksi.isConnected(BioSiswaAdminActivity.this)){
+                UpdateData();
+            } else {
+                CustomDialog.noInternet(BioSiswaAdminActivity.this);
+            }
+        });
+    }
 
     private void LoadData() {
         customProgress.showProgress(this, false);
@@ -86,14 +101,60 @@ public class BioSiswaActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(BioSiswaActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(BioSiswaAdminActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(BioSiswaActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(BioSiswaAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
     }
 
+    private void UpdateData() {
+        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
+                .addQueryParameter("TAG", "edit_bio")
+                .addQueryParameter("idsiswa", idsiswa)
+                .addQueryParameter("nama", et_nama.getText().toString().trim())
+                .addQueryParameter("alamat", et_alamat.getText().toString().trim())
+                .addQueryParameter("telp", et_telp.getText().toString().trim())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        successDialog(BioSiswaAdminActivity.this, response.optString("pesan"));
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        customProgress.hideProgress();
+                        if (error.getErrorCode() == 400) {
+                            try {
+                                JSONObject body = new JSONObject(error.getErrorBody());
+                                CustomDialog.errorDialog(BioSiswaAdminActivity.this, body.optString("pesan"));
+                            } catch (JSONException ignored) {
+                            }
+                        } else {
+                            CustomDialog.errorDialog(BioSiswaAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                        }
+                    }
+                });
+    }
+
+    public void successDialog(final Context context, final String alertText) {
+        final View inflater = LayoutInflater.from(context).inflate(R.layout.custom_success_dialog, null);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(inflater);
+        builder.setCancelable(false);
+        final TextView ket = inflater.findViewById(R.id.keterangan);
+        ket.setText(alertText);
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(R.color.transparan);
+        inflater.findViewById(R.id.ok).setOnClickListener(v -> {
+            finish();
+            alertDialog.dismiss();
+        });
+        alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        alertDialog.show();
+    }
 }
