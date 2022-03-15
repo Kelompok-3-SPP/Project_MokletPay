@@ -32,7 +32,7 @@ public class TambahSiswa extends AppCompatActivity {
     CekKoneksi koneksi = new CekKoneksi();
     private TextView et_cari;
     String idkelas;
-    private EditText et_nis, et_nama, et_jeniskelamin, et_alamat, et_telp;
+    private EditText et_nis, et_nama, et_alamat, et_telp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,6 @@ public class TambahSiswa extends AppCompatActivity {
 
         et_nis = findViewById(R.id.et_nis);
         et_nama = findViewById(R.id.et_nama);
-        et_jeniskelamin = findViewById(R.id.et_jeniskelamin);
         et_alamat = findViewById(R.id.et_alamat);
         et_telp = findViewById(R.id.et_telp);
 
@@ -73,7 +72,6 @@ public class TambahSiswa extends AppCompatActivity {
                 .addQueryParameter("idkelas", idkelas)
                 .addQueryParameter("nis", et_nis.getText().toString().trim())
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
-                .addQueryParameter("jenis_kelamin", et_jeniskelamin.getText().toString().trim())
                 .addQueryParameter("alamat", et_alamat.getText().toString().trim())
                 .addQueryParameter("notelp", et_telp.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
