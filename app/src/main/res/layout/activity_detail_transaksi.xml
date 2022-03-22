@@ -5,181 +5,246 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F7F5F4"
     tools:context=".transaksi.TambahPembayaranTransaksiInvoice">
 
     <include layout="@layout/custom_layout_toolbar" />
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/img_hapus"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_baseline_check_circle" />
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:layout_marginHorizontal="14dp"
+            app:cardCornerRadius="10dp">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="14dp">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="NIS Siswa"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
-
-                <TextView
-                    android:id="@+id/text_nis"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
+                    android:layout_marginTop="28dp"
+                    android:text="Detail Transaksi"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="NIS"
-                    android:textSize="@dimen/fontsize15" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:gravity="center"
+                    android:textSize="24dp"
+                    />
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:background="@color/black"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginHorizontal="20dp"/>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_marginTop="14dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="NIS"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize18" />
+
+                    <TextView
+                        android:id="@+id/text_nis"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="NIS"
+                        android:textSize="@dimen/fontsize18" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Nama Siswa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15" />
+
+                    <TextView
+                        android:id="@+id/text_nama"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="Memoreza Sabana"
+                        android:textSize="@dimen/fontsize15" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Kelas Siswa"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15" />
+
+                    <TextView
+                        android:id="@+id/text_kelas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="XRPL3"
+                        android:textSize="@dimen/fontsize15" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Tahun Ajaran Periode"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15" />
+
+                    <TextView
+                        android:id="@+id/text_tahun"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="2021"
+                        android:textSize="@dimen/fontsize15" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Bulan Periode"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15" />
+
+                    <TextView
+                        android:id="@+id/text_bulan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="Desember"
+                        android:textSize="@dimen/fontsize15" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="375dp"
+            android:layout_marginHorizontal="14dp"
+            app:cardCornerRadius="10dp">
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="14dp">
 
-                <TextView
-                    android:layout_width="0dp"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Nama Siswa"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
+                    android:layout_weight="2"
+                    android:layout_marginTop="14dp">
 
-                <TextView
-                    android:id="@+id/text_nama"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="Memoreza Sabana"
-                    android:textSize="@dimen/fontsize15" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Total SPP"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize18" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
+                    <TextView
+                        android:id="@+id/text_total"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="Rp200.000"
+                        android:textSize="@dimen/fontsize23" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Kelas Siswa"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unduh"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorRed"/>
 
-                <TextView
-                    android:id="@+id/text_kelas"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="XRPL3"
-                    android:textSize="@dimen/fontsize15" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Tahun Ajaran Periode"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
-
-                <TextView
-                    android:id="@+id/text_tahun"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="2021"
-                    android:textSize="@dimen/fontsize15" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Bulan Periode"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
-
-                <TextView
-                    android:id="@+id/text_bulan"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="Desember"
-                    android:textSize="@dimen/fontsize15" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="Total SPP"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/fontsize15" />
-
-                <TextView
-                    android:id="@+id/text_total"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="end"
-                    tools:text="Rp200.000"
-                    android:textSize="@dimen/fontsize25" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

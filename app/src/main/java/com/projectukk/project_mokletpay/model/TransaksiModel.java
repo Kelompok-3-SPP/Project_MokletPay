@@ -8,18 +8,15 @@ public class TransaksiModel {
     String tahun;
     String jumlah_pembayaran;
     String file_pembayaran;
-    String status_approve;
     String tgl_create;
 
-    public TransaksiModel(String idtransaksi, String invoice, String nama, String bulan, String tahun, String jumlah_pembayaran, String file_pembayaran, String status_approve, String tgl_create) {
+    public TransaksiModel(String idtransaksi, String nama, String bulan, String tahun, String jumlah_pembayaran, String tgl_create) {
         this.idtransaksi = idtransaksi;
-        this.invoice = invoice;
+//        this.invoice = invoice;
         this.nama = nama;
         this.bulan = bulan;
         this.tahun = tahun;
         this.jumlah_pembayaran = jumlah_pembayaran;
-        this.file_pembayaran = file_pembayaran;
-        this.status_approve = status_approve;
         this.tgl_create = tgl_create;
     }
 
@@ -27,9 +24,9 @@ public class TransaksiModel {
         return idtransaksi;
     }
 
-    public String getInvoice() {
-        return invoice;
-    }
+//    public String getInvoice() {
+//        return invoice;
+//    }
 
     public String getNama() {
         return nama;
@@ -47,15 +44,4 @@ public class TransaksiModel {
         return jumlah_pembayaran;
     }
 
-    public String getFile_pembayaran() {
-        return file_pembayaran;
-    }
-
-    public String getStatus_approve() {
-        return status_approve;
-    }
-
-    public String getTgl_create() {
-        return tgl_create;
-    }
 }

@@ -19,6 +19,27 @@
         android:theme="@style/Theme.AplikasiPembayaranSekolah"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".auth.BioAdminActivity"
+            android:exported="true" />
+        <activity
+            android:name=".admintransaksi.TambahAkun"
+            android:exported="true" />
+        <activity
+            android:name=".model.AdminModel"
+            android:exported="true" />
+        <activity
+            android:name=".admintransaksi.ListAdmin"
+            android:exported="true" />
+        <activity
+            android:name=".admintransaksi.TambahAdmin"
+            android:exported="true" />
+        <activity
+            android:name=".petugas.ListPetugas"
+            android:exported="true" />
+        <activity
+            android:name=".petugas.TambahPetugas"
+            android:exported="true" />
+        <activity
             android:name=".intro.OnBoardingActivity"
             android:exported="true" />
         <activity

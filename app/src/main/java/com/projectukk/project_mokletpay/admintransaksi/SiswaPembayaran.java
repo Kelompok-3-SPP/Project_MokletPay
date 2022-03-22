@@ -50,7 +50,7 @@ public class SiswaPembayaran extends AppCompatActivity {
     private LinearLayout ly00, ly11, ly22;
     private RecyclerView rv_data;
     List<com.projectukk.project_mokletpay.model.SiswaModel> SiswaModel;
-    int limit = 0, offset = 10;
+    int limit = 0, offset = 1000;
     private TextView text_more;
     private SwipeRefreshLayout swipe_refresh;
     private EditText text_search;
@@ -308,7 +308,7 @@ public class SiswaPembayaran extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(R.color.transparan);
         inflater.findViewById(R.id.ok).setOnClickListener(v -> {
-            onResume();
+//            onResume();
             alertDialog.dismiss();
         });
         alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

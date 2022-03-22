@@ -123,16 +123,4 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_bayar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Bayar SPP"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:background="@drawable/button_effect"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

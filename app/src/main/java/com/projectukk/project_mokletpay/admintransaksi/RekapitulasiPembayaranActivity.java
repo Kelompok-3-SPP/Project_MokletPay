@@ -48,7 +48,7 @@ public class RekapitulasiPembayaranActivity extends AppCompatActivity {
     private LinearLayout ly00, ly11, ly22;
     private RecyclerView rv_data;
     List<TransaksiModel> TransaksiModel;
-    int limit = 0, offset = 10;
+    int limit = 0, offset = 1000;
     private TextView text_more;
     private SwipeRefreshLayout swipe_refresh;
     private TextView et_cari;
@@ -124,13 +124,11 @@ public class RekapitulasiPembayaranActivity extends AppCompatActivity {
                                 JSONObject responses = response.getJSONObject(i);
                                 TransaksiModel bk = new TransaksiModel(
                                         responses.getString("idtransaksi"),
-                                        responses.getString("invoice"),
+//                                        responses.getString("invoice"),
                                         responses.getString("nama"),
                                         responses.getString("bulan"),
                                         responses.getString("tahun_ajaran"),
                                         responses.getString("jumlah_pembayaran"),
-                                        responses.getString("file_pembayaran"),
-                                        responses.getString("status_approve"),
                                         responses.getString("tgl_create"));
                                 TransaksiModel.add(bk);
                             }
@@ -221,14 +219,8 @@ public class RekapitulasiPembayaranActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ProductViewHolder holder, int i) {
             final TransaksiModel kelas = TransaksiModel.get(i);
-            holder.text_id.setText(kelas.getInvoice());
+//            holder.text_id.setText(kelas.getInvoice());
             holder.text_nama.setText(kelas.getNama());
-            holder.text_tanggal.setText(kelas.getBulan() + " | " + kelas.getTahun());
-            if (kelas.getStatus_approve().equals("Y")){
-                holder.text_status.setText("Sudah Disetujui");
-            } else {
-                holder.text_status.setText("Belum Disetujui");
-            }
             holder.cv.setOnClickListener(v -> {
                 Intent x = new Intent(mCtx, DetailTransaksi.class);
                 x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -250,7 +242,7 @@ public class RekapitulasiPembayaranActivity extends AppCompatActivity {
                 super(itemView);
                 text_nama = itemView.findViewById(R.id.text_nama);
                 text_id = itemView.findViewById(R.id.text_id);
-                text_status = itemView.findViewById(R.id.text_status);
+//                text_status = itemView.findViewById(R.id.text_status);
                 text_tanggal = itemView.findViewById(R.id.text_tanggal);
                 cv = itemView.findViewById(R.id.cv);
             }

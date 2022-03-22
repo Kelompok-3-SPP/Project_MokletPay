@@ -7,9 +7,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.projectukk.project_mokletpay.R;
+import com.projectukk.project_mokletpay.admintransaksi.SiswaPembayaran;
 import com.projectukk.project_mokletpay.auth.ProfilPetugasActivity;
 import com.projectukk.project_mokletpay.helper.SessionManager;
-import com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran;
 
 import java.io.File;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class MainPetugas extends AppCompatActivity {
             x.putExtra("idsiswa", iduser);
             startActivity(x);
         });
-        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MainPetugas.this, TransaksiPembayaran.class)));
+        findViewById(R.id.cv2).setOnClickListener(v -> startActivity(new Intent(MainPetugas.this, SiswaPembayaran.class)));
     }
 
     private void logoutUser() {

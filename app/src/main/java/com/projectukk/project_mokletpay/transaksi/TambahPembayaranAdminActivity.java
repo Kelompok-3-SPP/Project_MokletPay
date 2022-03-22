@@ -24,7 +24,6 @@ import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
-import com.projectukk.project_mokletpay.menu.MainSiswa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -243,7 +242,7 @@ public class TambahPembayaranAdminActivity extends AppCompatActivity {
     private void TambahData() {
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "tambah")
-                .addQueryParameter("idsiswa", MainSiswa.iduser)
+                .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("idperiode", idperiode)
                 .addQueryParameter("bulan", et_bulan.getText().toString().trim())
                 .addQueryParameter("jumlah_pembayaran", et_total.getText().toString().trim())
@@ -281,9 +280,9 @@ public class TambahPembayaranAdminActivity extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(R.color.transparan);
         inflater.findViewById(R.id.ok).setOnClickListener(v -> {
-            Intent i = new Intent(TambahPembayaranAdminActivity.this, TambahPembayaranTransaksiInvoice.class);
-            i.putExtra("idtransaksi", idtransaksi);
-            startActivity(i);
+//            Intent i = new Intent(TambahPembayaranAdminActivity.this, TambahPembayaranTransaksiInvoice.class);
+//            i.putExtra("idtransaksi", idtransaksi);
+//            startActivity(i);
             finish();
             alertDialog.dismiss();
         });

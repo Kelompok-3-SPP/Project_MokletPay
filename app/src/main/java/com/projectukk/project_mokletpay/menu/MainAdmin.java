@@ -10,8 +10,8 @@ import androidx.cardview.widget.CardView;
 
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.admintransaksi.ApprovalActivity;
-import com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity;
 import com.projectukk.project_mokletpay.admintransaksi.SiswaPembayaran;
+import com.projectukk.project_mokletpay.admintransaksi.TambahAkun;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
@@ -29,7 +29,7 @@ public class MainAdmin extends AppCompatActivity {
     private TextView text_nama;
     private AppCompatImageView img_logout;
     public static String iduser, username;
-    private CardView cv1, cv2, cv3, cv4, cv5;
+    private CardView cv1, cv2, cv3, cv4, cv5, cv6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class MainAdmin extends AppCompatActivity {
         cv3 = findViewById(R.id.cv3);
         cv4 = findViewById(R.id.cv4);
         cv5 = findViewById(R.id.cv5);
+        cv6 = findViewById(R.id.cv6);
+
 
         ActionButton();
         text_nama.setText("Halo " + username);
@@ -60,7 +62,9 @@ public class MainAdmin extends AppCompatActivity {
         cv3.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ApprovalActivity.class)));
         cv4.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, SiswaPembayaran.class)));
         cv5.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListPeriodeActivity.class)));
-        findViewById(R.id.cv6).setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, RekapitulasiAdminActivity.class)));
+//        cv6.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, RekapitulasiAdminActivity.class)));
+        cv6.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, TambahAkun.class)));
+
     }
 
     private void logoutUser() {

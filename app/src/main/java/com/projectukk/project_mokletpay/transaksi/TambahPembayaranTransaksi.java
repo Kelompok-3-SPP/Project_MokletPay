@@ -2,7 +2,6 @@ package com.projectukk.project_mokletpay.transaksi;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -278,9 +277,9 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(R.color.transparan);
         inflater.findViewById(R.id.ok).setOnClickListener(v -> {
-            Intent i = new Intent(TambahPembayaranTransaksi.this, TambahPembayaranTransaksiInvoice.class);
-            i.putExtra("idtransaksi", idtransaksi);
-            startActivity(i);
+//            Intent i = new Intent(TambahPembayaranTransaksi.this, TambahPembayaranTransaksiInvoice.class);
+//            i.putExtra("idtransaksi", idtransaksi);
+//            startActivity(i);
             finish();
             alertDialog.dismiss();
         });

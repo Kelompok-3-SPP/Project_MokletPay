@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".menu.MenuKepala">
+    tools:context=".menu.MainPetugas">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Pemabayaran SPP"
+                android:text="Pembayaran SPP"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
         </RelativeLayout>

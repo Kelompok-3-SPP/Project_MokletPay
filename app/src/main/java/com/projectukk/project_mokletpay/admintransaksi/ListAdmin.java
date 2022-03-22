@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,12 +28,12 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.projectukk.project_mokletpay.R;
+import com.projectukk.project_mokletpay.auth.BioAdminActivity;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
-import com.projectukk.project_mokletpay.model.TransaksiModel;
-import com.projectukk.project_mokletpay.transaksi.DetailTransaksi;
+import com.projectukk.project_mokletpay.model.AdminModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,29 +42,29 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApprovalActivity extends AppCompatActivity {
+public class ListAdmin extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
 
     private LinearLayout ly00, ly11, ly22;
     private RecyclerView rv_data;
-    List<TransaksiModel> TransaksiModel;
+    List<AdminModel> AdminModel;
     int limit = 0, offset = 1000;
     private TextView text_more;
     private SwipeRefreshLayout swipe_refresh;
+    private EditText text_search;
     private TextView et_cari;
-    String idkelas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_approval);
+        setContentView(R.layout.activity_list_admin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//  set status text dark
         }
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         et_cari = findViewById(R.id.et_cari);
-        et_cari.setText("Riwayat Pembayaran");
+        et_cari.setText("Daftar Admin");
 
         ly00 = findViewById(R.id.ly00);
         ly11 = findViewById(R.id.ly11);
@@ -70,9 +72,10 @@ public class ApprovalActivity extends AppCompatActivity {
         rv_data = findViewById(R.id.rv_data);
         text_more = findViewById(R.id.text_more);
         swipe_refresh = findViewById(R.id.swipe_refresh);
+        text_search = findViewById(R.id.text_search);
 
-        TransaksiModel = new ArrayList<>();
-        LinearLayoutManager x = new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false);
+        AdminModel = new ArrayList<>();
+        LinearLayoutManager x = new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false);
         rv_data.setHasFixedSize(true);
         rv_data.setLayoutManager(x);
         rv_data.setNestedScrollingEnabled(true);
@@ -81,40 +84,58 @@ public class ApprovalActivity extends AppCompatActivity {
     }
 
     private void ActiomButton() {
+        findViewById(R.id.add).setOnClickListener(v -> {
+            Intent i = new Intent(ListAdmin.this, TambahAdmin.class);
+//            i.putExtra("idpetugas", idpetugas);
+            startActivity(i);
+        });
         findViewById(R.id.back).setOnClickListener(v -> finish());
+        text_search.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                ly11.setVisibility(View.GONE);
+                ly00.setVisibility(View.VISIBLE);
+                ly22.setVisibility(View.GONE);
+                limit = 0;
+                AdminModel.clear();
+                LoadPegawai(limit, offset, text_search.getText().toString().trim());
+                return true;
+            }
+            return false;
+        });
         text_more.setOnClickListener(v -> {
             limit = limit + offset;
-            LoadPegawai(limit, offset);
+            LoadPegawai(limit, offset, text_search.getText().toString().trim());
         });
         swipe_refresh.setOnRefreshListener(() -> {
             ly11.setVisibility(View.GONE);
             ly00.setVisibility(View.VISIBLE);
             ly22.setVisibility(View.GONE);
+            text_search.setText("");
             limit = 0;
-            TransaksiModel.clear();
-            LoadPegawai(limit, offset);
+            AdminModel.clear();
+            LoadPegawai(limit, offset, text_search.getText().toString().trim());
         });
-//        findViewById(R.id.text_riwayat).setOnClickListener(v -> startActivity(new Intent(ApprovalActivity.this, RekapitulasiPembayaranActivity.class)));
     }
 
     @Override
     protected void onResume() {
         ly11.setVisibility(View.GONE);
         ly00.setVisibility(View.VISIBLE);
-
         ly22.setVisibility(View.GONE);
-        TransaksiModel.clear();
+        AdminModel.clear();
+        text_search.setText("");
         limit = 0;
-        LoadPegawai(limit, offset);
+        LoadPegawai(limit, offset, text_search.getText().toString().trim());
         super.onResume();
     }
 
-    private void LoadPegawai(int limit, int offset) {
+    private void LoadPegawai(int limit, int offset, String cari) {
         customProgress.showProgress(this, false);
-        AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
-                .addQueryParameter("TAG", "admin_listapprovepersiswa")
+        AndroidNetworking.get(Connection.CONNECT + "spp_admin.php")
+                .addQueryParameter("TAG", "listsemua")
                 .addQueryParameter("limit", String.valueOf(limit))
                 .addQueryParameter("offset", String.valueOf(offset))
+                .addQueryParameter("q", cari)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {
@@ -123,18 +144,13 @@ public class ApprovalActivity extends AppCompatActivity {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject responses = response.getJSONObject(i);
-                                TransaksiModel bk = new TransaksiModel(
-                                        responses.getString("idtransaksi"),
-//                                        responses.getString("invoice"),
-                                        responses.getString("nama"),
-                                        responses.getString("bulan"),
-                                        responses.getString("tahun_ajaran"),
-                                        responses.getString("jumlah_pembayaran"),
-                                        responses.getString("tgl_create"));
-                                TransaksiModel.add(bk);
+                                AdminModel bk = new AdminModel(
+                                        responses.getString("idadmin"),
+                                        responses.getString("nama_admin"));
+                                AdminModel.add(bk);
                             }
 
-                            PegawaiAdapter adapter = new PegawaiAdapter(getApplicationContext(), TransaksiModel);
+                            ListAdmin.PegawaiAdapter adapter = new ListAdmin.PegawaiAdapter(getApplicationContext(), AdminModel);
                             rv_data.setAdapter(adapter);
 
                             ly00.setVisibility(View.GONE);
@@ -145,6 +161,7 @@ public class ApprovalActivity extends AppCompatActivity {
                             } else {
                                 text_more.setVisibility(View.VISIBLE);
                             }
+
                             swipe_refresh.setRefreshing(false);
                             customProgress.hideProgress();
 
@@ -154,6 +171,7 @@ public class ApprovalActivity extends AppCompatActivity {
                             ly00.setVisibility(View.GONE);
                             ly22.setVisibility(View.GONE);
                             swipe_refresh.setRefreshing(false);
+//                            hideDialog();
                             customProgress.hideProgress();
                         }
                     }
@@ -161,92 +179,91 @@ public class ApprovalActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         if (error.getErrorCode() == 400) {
-                            customProgress.hideProgress();
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
                                 String kode = body.optString("kode");
                                 if (kode.equals("0")) {
                                     //tidak ada data
+                                    customProgress.hideProgress();
                                     swipe_refresh.setRefreshing(false);
                                     ly00.setVisibility(View.GONE);
                                     ly11.setVisibility(View.GONE);
                                     ly22.setVisibility(View.VISIBLE);
                                     text_more.setVisibility(View.GONE);
-                                    CustomDialog.errorDialog(ApprovalActivity.this, body.optString("pesan"));
+                                    CustomDialog.errorDialog(ListAdmin.this, body.optString("pesan"));
                                 } else if (kode.equals("1")) {
                                     //mencapai batas limit
+                                    customProgress.hideProgress();
                                     swipe_refresh.setRefreshing(false);
                                     ly00.setVisibility(View.GONE);
                                     ly11.setVisibility(View.VISIBLE);
                                     ly22.setVisibility(View.GONE);
                                     text_more.setVisibility(View.GONE);
-                                    CustomDialog.errorDialog(ApprovalActivity.this, body.optString("pesan"));
+                                    CustomDialog.errorDialog(ListAdmin.this, body.optString("pesan"));
                                 } else {
                                     //2 tiket dibatalkan
+                                    customProgress.hideProgress();
                                     swipe_refresh.setRefreshing(false);
                                     ly00.setVisibility(View.GONE);
                                     ly11.setVisibility(View.GONE);
                                     ly22.setVisibility(View.VISIBLE);
                                     text_more.setVisibility(View.GONE);
-                                    CustomDialog.errorDialog(ApprovalActivity.this, body.optString("pesan"));
+                                    CustomDialog.errorDialog(ListAdmin.this, body.optString("pesan"));
                                 }
                             } catch (JSONException ignored) {
                             }
                         } else {
                             customProgress.hideProgress();
-                            CustomDialog.errorDialog(ApprovalActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(ListAdmin.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
     }
 
-    public class PegawaiAdapter extends RecyclerView.Adapter<PegawaiAdapter.ProductViewHolder> {
+    public class PegawaiAdapter extends RecyclerView.Adapter<ListAdmin.PegawaiAdapter.ProductViewHolder> {
         private final Context mCtx;
-        private final List<TransaksiModel> TransaksiModel;
+        private final List<AdminModel> AdminModel;
 
-        PegawaiAdapter(Context mCtx, List<TransaksiModel> TransaksiModel) {
+        PegawaiAdapter(Context mCtx, List<AdminModel> AdminModel) {
             this.mCtx = mCtx;
-            this.TransaksiModel = TransaksiModel;
+            this.AdminModel = AdminModel;
         }
 
         @Override
-        public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        public ListAdmin.PegawaiAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             LayoutInflater inflater = LayoutInflater.from(mCtx);
-            @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.model_list_transaksi, null);
-            return new ProductViewHolder(view);
+            @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.model_list_admin, null);
+            return new ListAdmin.PegawaiAdapter.ProductViewHolder(view);
         }
 
         @SuppressLint("SetTextI18n")
         @Override
-        public void onBindViewHolder(ProductViewHolder holder, int i) {
-            final TransaksiModel kelas = TransaksiModel.get(i);
-//            holder.text_id.setText(kelas.getInvoice());
-            holder.text_nama.setText(kelas.getNama());
-            holder.text_tanggal.setText(kelas.getBulan() + " | " + kelas.getTahun());
-//            holder.text_status.setText("Detail");
-            holder.cv.setOnClickListener(v -> {
-                    Intent x = new Intent(mCtx, DetailTransaksi.class);
-                    x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    x.putExtra("idtransaksi", kelas.getIdtransaksi());
-                    mCtx.startActivity(x);
+        public void onBindViewHolder(ListAdmin.PegawaiAdapter.ProductViewHolder holder, int i) {
+            final AdminModel admin = AdminModel.get(i);
+            holder.text_nama.setText(admin.getNama_admin());
+            holder.text_id.setText(admin.getIdadmin());
+            holder.cv.setOnClickListener(view -> {
+                Intent x = new Intent(mCtx, BioAdminActivity.class);
+                x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                x.putExtra("idadmin", admin.getIdadmin());
+                mCtx.startActivity(x);
+                finish();
             });
         }
 
         @Override
         public int getItemCount() {
-            return TransaksiModel.size();
+            return AdminModel.size();
         }
 
         class ProductViewHolder extends RecyclerView.ViewHolder {
-            TextView text_id, text_nama, text_tanggal, text_status;
+            TextView text_nama, text_id;
             CardView cv;
 
             ProductViewHolder(View itemView) {
                 super(itemView);
                 text_nama = itemView.findViewById(R.id.text_nama);
                 text_id = itemView.findViewById(R.id.text_id);
-                text_tanggal = itemView.findViewById(R.id.text_tanggal);
-//                text_status = itemView.findViewById(R.id.text_status);
                 cv = itemView.findViewById(R.id.cv);
             }
         }
@@ -261,7 +278,7 @@ public class ApprovalActivity extends AppCompatActivity {
         final AlertDialog alertDialog = builder.create();
         alertDialog.getWindow().setBackgroundDrawableResource(R.color.transparan);
         inflater.findViewById(R.id.ok).setOnClickListener(v -> {
-//            onResume();
+            onResume();
             alertDialog.dismiss();
         });
         alertDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

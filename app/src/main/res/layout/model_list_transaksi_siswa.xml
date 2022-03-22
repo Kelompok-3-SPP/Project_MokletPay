@@ -16,7 +16,6 @@
         android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_gravity="center_horizontal"
         tools:ignore="UselessParent">
 
         <ImageView
@@ -38,17 +37,17 @@
             android:layout_toEndOf="@+id/ic_menu"
             android:orientation="vertical">
 
-<!--            <TextView-->
-<!--                android:id="@+id/text_id"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:gravity="center_vertical"-->
-<!--                android:singleLine="true"-->
-<!--                android:textColor="@color/colorRed"-->
-<!--                android:textSize="@dimen/fontsize15"-->
-<!--                tools:ignore="RtlSymmetry"-->
-<!--                tools:text="ID Mutasi" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/text_id"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:fontFamily="sans-serif-medium"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:textColor="@color/colorRed"-->
+            <!--                android:textSize="@dimen/fontsize15"-->
+            <!--                tools:ignore="RtlSymmetry"-->
+            <!--                tools:text="ID Mutasi" />-->
 
             <TextView
                 android:id="@+id/text_nama"
@@ -93,9 +92,9 @@
 <!--                android:fontFamily="sans-serif-condensed-medium"-->
 <!--                android:gravity="center"-->
 <!--                android:padding="5dp"-->
-<!--                android:text="Detail"-->
 <!--                android:textColor="#BF1212"-->
-<!--                android:textSize="@dimen/fontsize15" />-->
+<!--                android:textSize="@dimen/fontsize15"-->
+<!--                android:text="Detail" />-->
 
             <TextView
                 android:id="@+id/text_tanggal"

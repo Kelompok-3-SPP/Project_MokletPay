@@ -48,7 +48,7 @@ public class TransaksiPembayaran extends AppCompatActivity {
     private LinearLayout ly00, ly11, ly22;
     private RecyclerView rv_data;
     List<TransaksiModel> TransaksiModel;
-    int limit = 0, offset = 10;
+    int limit = 0, offset = 1000;
     private TextView text_more;
     private SwipeRefreshLayout swipe_refresh;
     private TextView et_cari;
@@ -95,7 +95,7 @@ public class TransaksiPembayaran extends AppCompatActivity {
             TransaksiModel.clear();
             LoadPegawai(limit, offset);
         });
-        findViewById(R.id.text_bayar).setOnClickListener(v -> startActivity(new Intent(TransaksiPembayaran.this, TambahPembayaranTransaksi.class)));
+//        findViewById(R.id.text_bayar).setOnClickListener(v -> startActivity(new Intent(TransaksiPembayaran.this, TambahPembayaranTransaksi.class)));
     }
 
     @Override
@@ -126,13 +126,11 @@ public class TransaksiPembayaran extends AppCompatActivity {
                                 JSONObject responses = response.getJSONObject(i);
                                 TransaksiModel bk = new TransaksiModel(
                                         responses.getString("idtransaksi"),
-                                        responses.getString("invoice"),
+//                                        responses.getString("invoice"),
                                         responses.getString("nama"),
                                         responses.getString("bulan"),
                                         responses.getString("tahun_ajaran"),
                                         responses.getString("jumlah_pembayaran"),
-                                        responses.getString("file_pembayaran"),
-                                        responses.getString("status_approve"),
                                         responses.getString("tgl_create"));
                                 TransaksiModel.add(bk);
                             }
@@ -215,7 +213,7 @@ public class TransaksiPembayaran extends AppCompatActivity {
         @Override
         public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             LayoutInflater inflater = LayoutInflater.from(mCtx);
-            @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.model_list_transaksi, null);
+            @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.model_list_transaksi_siswa, null);
             return new ProductViewHolder(view);
         }
 
@@ -223,26 +221,17 @@ public class TransaksiPembayaran extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ProductViewHolder holder, int i) {
             final TransaksiModel kelas = TransaksiModel.get(i);
-            holder.text_id.setText(kelas.getInvoice());
+//            holder.text_id.setText(kelas.getInvoice());
             holder.text_nama.setText(kelas.getJumlah_pembayaran());
             holder.text_tanggal.setText(kelas.getBulan() + " | " + kelas.getTahun());
-            if (kelas.getStatus_approve().equals("Y")){
-                holder.text_status.setText("Sudah di approve oleh admin");
-            } else {
-                holder.text_status.setText("Belum di approve oleh admin");
-            }
+//            holder.text_status.setText("Detail");
+
             holder.cv.setOnClickListener(v -> {
-                if (kelas.getStatus_approve().equals("N")){
-                    Intent x = new Intent(mCtx, TambahPembayaranTransaksiInvoice.class);
-                    x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    x.putExtra("idtransaksi", kelas.getIdtransaksi());
-                    mCtx.startActivity(x);
-                } else {
                     Intent x = new Intent(mCtx, DetailTransaksi.class);
                     x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     x.putExtra("idtransaksi", kelas.getIdtransaksi());
                     mCtx.startActivity(x);
-                }
+
             });
         }
 
@@ -252,15 +241,15 @@ public class TransaksiPembayaran extends AppCompatActivity {
         }
 
         class ProductViewHolder extends RecyclerView.ViewHolder {
-            TextView text_id, text_nama, text_status, text_tanggal;
+            TextView text_id, text_nama, text_tanggal;
             CardView cv;
 
             ProductViewHolder(View itemView) {
                 super(itemView);
                 text_nama = itemView.findViewById(R.id.text_nama);
                 text_id = itemView.findViewById(R.id.text_id);
-                text_status = itemView.findViewById(R.id.text_status);
                 text_tanggal = itemView.findViewById(R.id.text_tanggal);
+//                text_status = itemView.findViewById(R.id.text_status);
                 cv = itemView.findViewById(R.id.cv);
             }
         }

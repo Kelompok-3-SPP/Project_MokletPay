@@ -28,18 +28,18 @@ import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BioSiswaAdminActivity extends AppCompatActivity {
+public class BioAdminActivity extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
 
     private LinearLayout ly00, ly11;
-    private EditText et_nama, et_username, et_alamat, et_telp, et_kelas;
+    private EditText et_nama, et_notelp;
     String idsiswa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bio_siswa_admin);
+        setContentView(R.layout.activity_bio_admin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -51,10 +51,7 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
         ly00 = findViewById(R.id.ly00);
         ly11 = findViewById(R.id.ly11);
         et_nama = findViewById(R.id.et_nama);
-        et_username = findViewById(R.id.et_username);
-        et_alamat = findViewById(R.id.et_alamat);
-        et_telp = findViewById(R.id.et_telp);
-        et_kelas = findViewById(R.id.et_kelas);
+        et_notelp = findViewById(R.id.et_telp);
 
         ly00.setVisibility(View.VISIBLE);
         ly11.setVisibility(View.GONE);
@@ -66,18 +63,18 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
     private void actionButton() {
         findViewById(R.id.back).setOnClickListener(v -> finish());
         findViewById(R.id.text_simpan).setOnClickListener(v -> {
-            if (koneksi.isConnected(BioSiswaAdminActivity.this)){
+            if (koneksi.isConnected(BioAdminActivity.this)){
                 UpdateData();
             } else {
-                CustomDialog.noInternet(BioSiswaAdminActivity.this);
+                CustomDialog.noInternet(BioAdminActivity.this);
             }
         });
     }
 
     private void LoadData() {
         customProgress.showProgress(this, false);
-        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
-                .addQueryParameter("TAG", "detail")
+        AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
+                .addQueryParameter("TAG", "detail_petugas")
                 .addQueryParameter("idsiswa", idsiswa)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -85,10 +82,7 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         et_nama.setText(response.optString("nama"));
-                        et_username.setText(response.optString("nis"));
-                        et_alamat.setText(response.optString("alamat"));
-                        et_telp.setText(response.optString("notelp"));
-                        et_kelas.setText(response.optString("nama_kelas"));
+                        et_notelp.setText(response.optString("notelp"));
 
                         ly00.setVisibility(View.GONE);
                         ly11.setVisibility(View.VISIBLE);
@@ -101,29 +95,27 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(BioSiswaAdminActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(BioAdminActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(BioSiswaAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(BioAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
     }
 
     private void UpdateData() {
-        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
-                .addQueryParameter("TAG", "edit_bio")
+        AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
+                .addQueryParameter("TAG", "edit_petugas")
                 .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
-                .addQueryParameter("alamat", et_alamat.getText().toString().trim())
-                .addQueryParameter("notelp", et_telp.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        successDialog(BioSiswaAdminActivity.this, response.optString("pesan"));
+                        successDialog(BioAdminActivity.this, response.optString("pesan"));
                     }
 
                     @Override
@@ -132,11 +124,11 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(BioSiswaAdminActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(BioAdminActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(BioSiswaAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(BioAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
