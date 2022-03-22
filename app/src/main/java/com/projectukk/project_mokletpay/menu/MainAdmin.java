@@ -9,8 +9,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.cardview.widget.CardView;
 
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.admintransaksi.ApprovalActivity;
-import com.projectukk.project_mokletpay.admintransaksi.SiswaPembayaran;
+import com.projectukk.project_mokletpay.admintransaksi.RekapitulasiAdminActivity;
 import com.projectukk.project_mokletpay.admintransaksi.TambahAkun;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
@@ -18,6 +17,7 @@ import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import com.projectukk.project_mokletpay.kelas.MainKelas;
 import com.projectukk.project_mokletpay.periode.ListPeriodeActivity;
 import com.projectukk.project_mokletpay.siswa.ListSemuaSiswaAdmin;
+import com.projectukk.project_mokletpay.transaksi.MenuPembayaran;
 
 import java.io.File;
 import java.util.HashMap;
@@ -59,8 +59,8 @@ public class MainAdmin extends AppCompatActivity {
         img_logout.setOnClickListener(v -> logoutUser());
         cv1.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, MainKelas.class)));
         cv2.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListSemuaSiswaAdmin.class)));
-        cv3.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ApprovalActivity.class)));
-        cv4.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, SiswaPembayaran.class)));
+        cv3.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, MenuPembayaran.class)));
+        cv4.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, RekapitulasiAdminActivity.class)));
         cv5.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, ListPeriodeActivity.class)));
 //        cv6.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, RekapitulasiAdminActivity.class)));
         cv6.setOnClickListener(v -> startActivity(new Intent(MainAdmin.this, TambahAkun.class)));

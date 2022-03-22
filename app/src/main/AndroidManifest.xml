@@ -19,6 +19,9 @@
         android:theme="@style/Theme.AplikasiPembayaranSekolah"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".transaksi.MenuPembayaran"
+            android:exported="true" />
+        <activity
             android:name=".auth.BioAdminActivity"
             android:exported="true" />
         <activity

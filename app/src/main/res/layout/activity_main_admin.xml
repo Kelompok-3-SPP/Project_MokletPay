@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="Riwayat SPP"
+                    android:text="SPP"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="Pembayaran SPP"
+                    android:text="Rekapitulasi SPP"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -260,7 +260,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="Rekapitulasi SPP"
+                    android:text="Petugas"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
