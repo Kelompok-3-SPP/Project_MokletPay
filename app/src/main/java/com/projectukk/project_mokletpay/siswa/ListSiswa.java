@@ -50,7 +50,7 @@ public class ListSiswa extends AppCompatActivity {
     private LinearLayout ly00, ly11, ly22;
     private RecyclerView rv_data;
     List<SiswaModel> SiswaModel;
-    int limit = 0, offset = 10;
+    int limit = 0, offset = 1000;
     private TextView text_more;
     private SwipeRefreshLayout swipe_refresh;
     private EditText text_search;

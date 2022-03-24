@@ -58,6 +58,7 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
 
         ly00.setVisibility(View.VISIBLE);
         ly11.setVisibility(View.GONE);
+
         LoadData();
 
         actionButton();
@@ -72,7 +73,15 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
                 CustomDialog.noInternet(BioSiswaAdminActivity.this);
             }
         });
+        findViewById(R.id.text_hapus).setOnClickListener(v -> {
+            if (koneksi.isConnected(BioSiswaAdminActivity.this)){
+                HapusData(idsiswa);
+            } else {
+                CustomDialog.noInternet(BioSiswaAdminActivity.this);
+            }
+        });
     }
+
 
     private void LoadData() {
         customProgress.showProgress(this, false);
@@ -123,6 +132,36 @@ public class BioSiswaAdminActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        successDialog(BioSiswaAdminActivity.this, response.optString("pesan"));
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        customProgress.hideProgress();
+                        if (error.getErrorCode() == 400) {
+                            try {
+                                JSONObject body = new JSONObject(error.getErrorBody());
+                                CustomDialog.errorDialog(BioSiswaAdminActivity.this, body.optString("pesan"));
+                            } catch (JSONException ignored) {
+                            }
+                        } else {
+                            CustomDialog.errorDialog(BioSiswaAdminActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                        }
+                    }
+                });
+    }
+
+    private void HapusData(String idsiswa) {
+        customProgress.showProgress(this, false);
+        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
+                .addQueryParameter("TAG", "hapus")
+                .addQueryParameter("idsiswa", idsiswa)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        customProgress.hideProgress();
                         successDialog(BioSiswaAdminActivity.this, response.optString("pesan"));
                     }
 

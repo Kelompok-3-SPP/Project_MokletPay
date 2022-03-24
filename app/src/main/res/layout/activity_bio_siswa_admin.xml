@@ -259,6 +259,19 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/text_hapus"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/btn_primary"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:text="Hapus"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/fontsize18"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
                         android:id="@+id/text_simpan"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
