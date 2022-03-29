@@ -37,7 +37,7 @@ public class ProfilPetugasActivity extends AppCompatActivity {
     private EditText et_nama, et_username, et_pass;
     private TextView text_pass;
     private TextInputLayout text_pass2;
-    String idsiswa;
+    String idpetugas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class ProfilPetugasActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         Intent i = getIntent();
-        idsiswa = i.getStringExtra("idsiswa");
+        idpetugas = i.getStringExtra("idpetugas");
 
         ly00 = findViewById(R.id.ly00);
         ly11 = findViewById(R.id.ly11);
@@ -85,7 +85,7 @@ public class ProfilPetugasActivity extends AppCompatActivity {
         customProgress.showProgress(this, false);
         AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
                 .addQueryParameter("TAG", "detail_petugas")
-                .addQueryParameter("idsiswa", idsiswa)
+                .addQueryParameter("idpetugas", idpetugas)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -118,7 +118,7 @@ public class ProfilPetugasActivity extends AppCompatActivity {
     private void UpdateData() {
         AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
                 .addQueryParameter("TAG", "edit_petugas")
-                .addQueryParameter("idsiswa", idsiswa)
+                .addQueryParameter("idsiswa", idpetugas)
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
                 .addQueryParameter("password", et_pass.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)

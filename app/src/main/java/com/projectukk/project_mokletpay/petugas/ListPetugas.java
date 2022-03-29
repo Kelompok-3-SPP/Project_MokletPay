@@ -28,7 +28,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.auth.BioSiswaAdminActivity;
+import com.projectukk.project_mokletpay.auth.ProfilPetugasActivity;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
@@ -244,7 +244,7 @@ public class ListPetugas extends AppCompatActivity {
             holder.text_nama.setText(petugass.getNama_petugas());
             holder.text_id.setText(petugass.getIdpetugas());
             holder.cv.setOnClickListener(view -> {
-                Intent x = new Intent(mCtx, BioSiswaAdminActivity.class);
+                Intent x = new Intent(mCtx, ProfilPetugasActivity.class);
                 x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 x.putExtra("idpetugas", petugass.getIdpetugas());
                 mCtx.startActivity(x);

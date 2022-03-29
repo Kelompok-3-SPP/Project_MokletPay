@@ -77,7 +77,7 @@ public class TambahPeriode extends AppCompatActivity {
         int width = (metrics.widthPixels / 100) * 100;
         dialog.getWindow().setLayout(width, LinearLayout.LayoutParams.WRAP_CONTENT);
         dialog.setContentView(dialogView);
-        ((TextView) dialogView.findViewById(R.id.dialogTitle)).setText("LOKASI");
+        ((TextView) dialogView.findViewById(R.id.dialogTitle)).setText("Bulan");
         ListView listView = dialog.findViewById(R.id.listView);
 
         final ArrayList<String> sortList = new ArrayList<String>();

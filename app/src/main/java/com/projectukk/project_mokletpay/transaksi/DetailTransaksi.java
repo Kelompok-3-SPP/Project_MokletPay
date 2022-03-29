@@ -1,12 +1,10 @@
 package com.projectukk.project_mokletpay.transaksi;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.os.Build.VERSION.SDK_INT;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -71,11 +68,11 @@ public class DetailTransaksi extends AppCompatActivity {
         setContentView(R.layout.activity_detail_transaksi);
         et_cari = findViewById(R.id.et_cari);
         et_cari.setText("Detail Pembayaran");
-
-        if (!checkPermission()){
-
-            requestPermission();
-        }
+//
+//        if (!checkPermission()){
+//
+//            requestPermission();
+//        }
 
         //add strict mode code on app intialize
 
@@ -164,7 +161,7 @@ public class DetailTransaksi extends AppCompatActivity {
                             File file = saveBitMap(DetailTransaksi.this, layout);    //which view you want to pass that view as parameter
                             if (file != null) {
                                 Log.i("TAG", "Drawing saved to the gallery!");
-                                Toast.makeText(DetailTransaksi.this, "Processing", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetailTransaksi.this, "Mengunduh", Toast.LENGTH_SHORT).show();
 
 
                                 try {
@@ -270,15 +267,15 @@ public class DetailTransaksi extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    private boolean checkPermission() {
-        if (SDK_INT >= Build.VERSION_CODES.R) {
-            return Environment.isExternalStorageManager();
-        } else {
-            int result = ContextCompat.checkSelfPermission(DetailTransaksi.this, READ_EXTERNAL_STORAGE);
-            int result1 = ContextCompat.checkSelfPermission(DetailTransaksi.this, WRITE_EXTERNAL_STORAGE);
-            return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
-        }
-    }
+//    private boolean checkPermission() {
+//        if (SDK_INT >= Build.VERSION_CODES.R) {
+//            return Environment.isExternalStorageManager();
+//        } else {
+//            int result = ContextCompat.checkSelfPermission(DetailTransaksi.this, READ_EXTERNAL_STORAGE);
+//            int result1 = ContextCompat.checkSelfPermission(DetailTransaksi.this, WRITE_EXTERNAL_STORAGE);
+//            return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+//        }
+//    }
 
 
     private void requestPermission() {

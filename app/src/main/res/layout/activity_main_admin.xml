@@ -50,6 +50,7 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cv1"
             android:layout_width="0dp"
@@ -266,5 +267,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 
 </LinearLayout>
