@@ -188,13 +188,40 @@
                         android:textSize="@dimen/fontsize15" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Nama Petugas"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/fontsize15" />
+
+                    <TextView
+                        android:id="@+id/text_petugas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:gravity="end"
+                        tools:text="Memoreza"
+                        android:textSize="@dimen/fontsize15" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="375dp"
+            android:layout_marginTop="420dp"
             android:layout_marginHorizontal="14dp"
             app:cardCornerRadius="10dp">
 
@@ -215,7 +242,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:padding="10dp"
+                        android:padding="5dp"
                         android:text="Total SPP"
                         android:textColor="@color/black"
                         android:textSize="@dimen/fontsize18" />

@@ -2,6 +2,7 @@ package com.projectukk.project_mokletpay.transaksi;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.os.Build.VERSION.SDK_INT;
+import static com.projectukk.project_mokletpay.menu.MainAdmin.username;
 
 import android.content.Context;
 import android.content.Intent;
@@ -54,13 +55,15 @@ import java.util.List;
 public class DetailTransaksi extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
+//    public static SessionManager SessionManager;
+//    public static String iduser, username;
 
     String fName = String.valueOf(System.currentTimeMillis());
 
     private TextView et_cari;
     String idtransaksi;
     String nis, nama, nama_kelas, tahun_ajaran, bulan, jumlah_pembayaran;
-    TextView text_nis, text_nama, text_kelas, text_tahun, text_bulan, text_total;
+    TextView text_nis, text_nama, text_kelas, text_tahun, text_bulan, text_total, text_petugas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,17 @@ public class DetailTransaksi extends AppCompatActivity {
         setContentView(R.layout.activity_detail_transaksi);
         et_cari = findViewById(R.id.et_cari);
         et_cari.setText("Detail Pembayaran");
+
+//        SessionManager = new SessionManager(DetailTransaksi.this);
+//        SessionManager.checkLogin();
+//        HashMap<String, String> user = SessionManager.getUserDetails();
+//        iduser = user.get(SessionManager.KEY_ID);
+//        username = user.get(SessionManager.KEY_USERNAME);
+
+        text_petugas = findViewById(R.id.text_petugas);
+        text_petugas.setText(username);
+
+
 //
 //        if (!checkPermission()){
 //
@@ -100,6 +114,7 @@ public class DetailTransaksi extends AppCompatActivity {
         text_bulan = findViewById(R.id.text_bulan);
         text_total = findViewById(R.id.text_total);
 
+
         LoadData();
     }
 
@@ -129,6 +144,7 @@ public class DetailTransaksi extends AppCompatActivity {
                         text_tahun.setText(tahun_ajaran);
                         text_bulan.setText(bulan);
                         text_total.setText(jumlah_pembayaran);
+
                     }
 
                     @Override

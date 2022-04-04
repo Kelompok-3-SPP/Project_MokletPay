@@ -212,8 +212,8 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
                         jumlah_siswa = response.optString("jumlah_siswa");
                         total_pembayaran_format = response.optString("total_pembayaran_format");
 
-                        text_siswa.setText(jumlah_siswa + " Siswa");
-                        text_transaksi.setText(jumlah_transaksi + " Transaksi");
+                        text_siswa.setText(jumlah_siswa + "Siswa");
+                        text_transaksi.setText(jumlah_transaksi + "Transaksi");
                         text_total.setText(total_pembayaran_format);
                     }
 

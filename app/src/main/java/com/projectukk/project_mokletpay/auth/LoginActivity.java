@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputUsername, inputkatasandi;
     private AppCompatTextView btnLogin;
     private SessionManager SessionManager;
-    String status_login;
+    public static String status_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

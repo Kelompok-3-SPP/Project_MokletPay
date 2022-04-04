@@ -44,8 +44,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:backgroundTint="@color/black"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
+                        android:clickable="false"
+                        android:focusable="false"
                         android:textColor="@color/black"
                         android:textSize="@dimen/fontsize15"
                         tools:ignore="Autofill,HardcodedText,LabelFor,UnusedAttribute" />
