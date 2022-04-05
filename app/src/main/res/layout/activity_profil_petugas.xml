@@ -12,47 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="0dp"
-            app:cardElevation="2dp"
-            tools:ignore="MissingConstraints">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:paddingBottom="24dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/ic_header_adddata">
-
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="40dp"
-                    android:layout_height="60dp"
-                    android:padding="5dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/white"
-                    tools:ignore="ContentDescription" />
-
-                <TextView
-                    android:id="@+id/et_cari"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toEndOf="@+id/back"
-                    android:fontFamily="sans-serif-medium"
-                    android:gravity="center_vertical"
-                    android:text="Profil"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/fontsize20"
-                    tools:ignore="Autofill,HardcodedText,TextFields" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        <include layout="@layout/custom_layout_toolbar" />
 
         <LinearLayout
             android:id="@+id/ly00"
@@ -120,6 +80,8 @@
                             android:inputType="textCapWords"
                             android:maxLength="40"
                             android:maxLines="1"
+                            android:focusable="false"
+                            android:clickable="false"
                             android:textColor="@color/black"
                             android:textSize="@dimen/fontsize15"
                             tools:ignore="Autofill,HardcodedText,LabelFor,UnusedAttribute" />
@@ -160,7 +122,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:hint="Username"
+                        android:hint="Nomor Telepon"
                         tools:ignore="HardcodedText">
 
                         <EditText
@@ -177,17 +139,6 @@
                             tools:ignore="Autofill,HardcodedText,LabelFor,UnusedAttribute" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:id="@+id/text_pass"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:background="@drawable/btn_stroke_primary"
-                        android:text="Ubah Password"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/fontsize15"
-                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_pass2"
@@ -219,6 +170,36 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp"-->
+<!--                app:cardBackgroundColor="@color/white"-->
+<!--                app:cardCornerRadius="5dp"-->
+<!--                app:cardElevation="0dp"-->
+<!--                app:cardUseCompatPadding="true"-->
+<!--                tools:ignore="MissingConstraints">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/text_simpan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="56dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@drawable/button_effect"-->
+<!--                        android:fontFamily="sans-serif-medium"-->
+<!--                        android:gravity="center"-->
+<!--                        android:text="Simpan"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="@dimen/fontsize18"-->
+<!--                        tools:ignore="HardcodedText" />-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -235,17 +216,18 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/text_simpan"
+                        android:id="@+id/text_hapus"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="50dp"
                         android:layout_margin="10dp"
-                        android:background="@drawable/button_effect"
+                        android:background="@drawable/btn_primary"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text="Simpan"
+                        android:text="Hapus"
                         android:textColor="@color/white"
                         android:textSize="@dimen/fontsize18"
                         tools:ignore="HardcodedText" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

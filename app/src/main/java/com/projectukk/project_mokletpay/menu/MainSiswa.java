@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView;
 
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.auth.BioSiswaActivity;
-import com.projectukk.project_mokletpay.auth.InformasiActivity;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.transaksi.TransaksiPembayaran;
 
@@ -58,7 +57,6 @@ public class MainSiswa extends AppCompatActivity {
             startActivity(x);
         });
         cv2.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, TransaksiPembayaran.class)));
-        cv3.setOnClickListener(v -> startActivity(new Intent(MainSiswa.this, InformasiActivity.class)));
     }
 
     private void logoutUser() {

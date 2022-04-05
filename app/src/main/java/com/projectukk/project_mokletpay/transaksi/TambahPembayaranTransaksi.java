@@ -2,6 +2,7 @@ package com.projectukk.project_mokletpay.transaksi;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,10 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.helper.Connection;
+import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
-import com.projectukk.project_mokletpay.menu.MainSiswa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,7 +44,10 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     ArrayList<HashMap<String, String>> dataTahun = new ArrayList<>();
     ArrayList<HashMap<String, String>> dataBulan = new ArrayList<>();
 
-    String idperiode, idtransaksi;
+    String idperiode, idtransaksi, idsiswa;
+
+    public static com.projectukk.project_mokletpay.helper.SessionManager SessionManager;
+    public static String iduser, username;
 
 
     @Override
@@ -63,7 +67,16 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         findViewById(R.id.back).setOnClickListener(view -> finish());
         et_cari.setText("Pembayaran SPP");
 
+        Intent i = getIntent();
+        idsiswa = i.getStringExtra("idsiswa");
+
         ActionButton();
+
+        SessionManager = new SessionManager(TambahPembayaranTransaksi.this);
+        SessionManager.checkLogin();
+        HashMap<String, String> user = SessionManager.getUserDetails();
+        iduser = user.get(SessionManager.KEY_ID);
+        username = user.get(SessionManager.KEY_USERNAME);
 
         LoadData();
     }
@@ -88,7 +101,7 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
         customProgress.showProgress(this, false);
         AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
                 .addQueryParameter("TAG", "detail")
-                .addQueryParameter("idsiswa", MainSiswa.iduser)
+                .addQueryParameter("idsiswa", idsiswa)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -239,9 +252,10 @@ public class TambahPembayaranTransaksi extends AppCompatActivity {
     private void TambahData() {
         AndroidNetworking.get(Connection.CONNECT + "spp_transaksi.php")
                 .addQueryParameter("TAG", "tambah")
-                .addQueryParameter("idsiswa", MainSiswa.iduser)
+                .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("idperiode", idperiode)
                 .addQueryParameter("bulan", et_bulan.getText().toString().trim())
+                .addQueryParameter("username", username)
                 .addQueryParameter("jumlah_pembayaran", et_total.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()

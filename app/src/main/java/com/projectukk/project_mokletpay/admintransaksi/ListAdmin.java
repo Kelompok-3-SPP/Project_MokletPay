@@ -28,7 +28,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.projectukk.project_mokletpay.R;
-import com.projectukk.project_mokletpay.auth.BioAdminActivity;
+import com.projectukk.project_mokletpay.auth.ProfilAdminActivity;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
@@ -243,7 +243,7 @@ public class ListAdmin extends AppCompatActivity {
             holder.text_nama.setText(admin.getNama_admin());
             holder.text_id.setText(admin.getIdadmin());
             holder.cv.setOnClickListener(view -> {
-                Intent x = new Intent(mCtx, BioAdminActivity.class);
+                Intent x = new Intent(mCtx, ProfilAdminActivity.class);
                 x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 x.putExtra("idadmin", admin.getIdadmin());
                 mCtx.startActivity(x);

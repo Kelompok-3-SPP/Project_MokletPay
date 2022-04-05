@@ -2,7 +2,6 @@ package com.projectukk.project_mokletpay.transaksi;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.os.Build.VERSION.SDK_INT;
-import static com.projectukk.project_mokletpay.menu.MainAdmin.username;
 
 import android.content.Context;
 import android.content.Intent;
@@ -61,8 +60,8 @@ public class DetailTransaksi extends AppCompatActivity {
     String fName = String.valueOf(System.currentTimeMillis());
 
     private TextView et_cari;
-    String idtransaksi;
-    String nis, nama, nama_kelas, tahun_ajaran, bulan, jumlah_pembayaran;
+    String idtransaksi, iduser;
+    String nis, nama, nama_kelas, tahun_ajaran, bulan, petugas, jumlah_pembayaran;
     TextView text_nis, text_nama, text_kelas, text_tahun, text_bulan, text_total, text_petugas;
 
     @Override
@@ -78,8 +77,7 @@ public class DetailTransaksi extends AppCompatActivity {
 //        iduser = user.get(SessionManager.KEY_ID);
 //        username = user.get(SessionManager.KEY_USERNAME);
 
-        text_petugas = findViewById(R.id.text_petugas);
-        text_petugas.setText(username);
+
 
 
 //
@@ -107,12 +105,15 @@ public class DetailTransaksi extends AppCompatActivity {
         Intent i = getIntent();
         idtransaksi = i.getStringExtra("idtransaksi");
 
+
         text_nis = findViewById(R.id.text_nis);
         text_nama = findViewById(R.id.text_nama);
         text_kelas = findViewById(R.id.text_kelas);
         text_tahun = findViewById(R.id.text_tahun);
         text_bulan = findViewById(R.id.text_bulan);
         text_total = findViewById(R.id.text_total);
+        text_petugas = findViewById(R.id.text_petugas);
+
 
 
         LoadData();
@@ -136,6 +137,7 @@ public class DetailTransaksi extends AppCompatActivity {
                         nama_kelas = response.optString("nama_kelas");
                         tahun_ajaran = response.optString("tahun_ajaran");
                         bulan = response.optString("bulan");
+                        petugas = response.optString("nama_petugas");
                         jumlah_pembayaran = response.optString("jumlah_pembayaran");
 
                         text_nis.setText(nis);
@@ -143,6 +145,7 @@ public class DetailTransaksi extends AppCompatActivity {
                         text_kelas.setText(nama_kelas);
                         text_tahun.setText(tahun_ajaran);
                         text_bulan.setText(bulan);
+                        text_petugas.setText(petugas);
                         text_total.setText(jumlah_pembayaran);
 
                     }

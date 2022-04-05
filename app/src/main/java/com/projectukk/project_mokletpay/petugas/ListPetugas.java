@@ -269,6 +269,7 @@ public class ListPetugas extends AppCompatActivity {
             }
         }
     }
+
     public void successDialog(final Context context, final String alertText) {
         final View inflater = LayoutInflater.from(context).inflate(R.layout.custom_success_dialog, null);
         final AlertDialog.Builder builder = new AlertDialog.Builder(context).setView(inflater);

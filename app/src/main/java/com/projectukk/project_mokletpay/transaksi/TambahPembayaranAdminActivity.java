@@ -21,6 +21,7 @@ import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.helper.Connection;
+import com.projectukk.project_mokletpay.helper.SessionManager;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
 import com.projectukk.project_mokletpay.helper.utils.CustomDialog;
 import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
@@ -45,6 +46,9 @@ public class TambahPembayaranAdminActivity extends AppCompatActivity {
 
     String idperiode, idtransaksi, idsiswa;
 
+    public static com.projectukk.project_mokletpay.helper.SessionManager SessionManager;
+    public static String iduser, username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,12 @@ public class TambahPembayaranAdminActivity extends AppCompatActivity {
         idsiswa = i.getStringExtra("idsiswa");
 
         ActionButton();
+
+        SessionManager = new SessionManager(TambahPembayaranAdminActivity.this);
+        SessionManager.checkLogin();
+        HashMap<String, String> user = SessionManager.getUserDetails();
+        iduser = user.get(SessionManager.KEY_ID);
+        username = user.get(SessionManager.KEY_USERNAME);
 
         LoadData();
     }
@@ -245,6 +255,7 @@ public class TambahPembayaranAdminActivity extends AppCompatActivity {
                 .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("idperiode", idperiode)
                 .addQueryParameter("bulan", et_bulan.getText().toString().trim())
+                .addQueryParameter("nama_petugas", username)
                 .addQueryParameter("jumlah_pembayaran", et_total.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()

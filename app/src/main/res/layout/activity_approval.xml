@@ -5,45 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admintransaksi.ApprovalActivity">
-
-
-
+    <!--TIDAK DIGUNAKAN-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:paddingBottom="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/ic_header_adddata">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="35dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_back"
-                app:tint="@color/white"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/et_cari"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/back"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                tools:ignore="Autofill,HardcodedText,TextFields"
-                tools:text="Anggota Sistem" />
-        </RelativeLayout>
+        <include layout="@layout/custom_layout_toolbar" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
@@ -129,19 +97,4 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_riwayat"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="56dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:background="@drawable/button_effect"-->
-<!--        android:gravity="center"-->
-<!--        android:text="Riwayat Pembayaran SPP"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold" />-->
 </RelativeLayout>

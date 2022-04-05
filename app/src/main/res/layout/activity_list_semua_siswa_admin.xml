@@ -7,39 +7,7 @@
     android:orientation="vertical"
     tools:context=".siswa.ListSemuaSiswaAdmin">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:paddingBottom="24dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/ic_header_adddata">
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="35dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_back"
-            app:tint="@color/white"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/et_cari"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/back"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:ignore="Autofill,HardcodedText,TextFields"
-            tools:text="Anggota Sistem" />
-    </RelativeLayout>
+    <include layout="@layout/custom_layout_toolbar" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -14,17 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/img_hapus"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_baseline_check_circle" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="20dp"
             android:layout_marginHorizontal="14dp"
             app:cardCornerRadius="10dp">
 
@@ -35,10 +28,18 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="14dp">
 
+                <ImageView
+                    android:id="@+id/img_hapus"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_baseline_check_circle" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
+                    android:layout_marginTop="20dp"
                     android:text="Detail Transaksi"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -52,7 +53,7 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginHorizontal="20dp"/>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_marginTop="14dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,9 +79,9 @@
                         android:gravity="end"
                         tools:text="NIS"
                         android:textSize="@dimen/fontsize18" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
@@ -105,9 +106,9 @@
                         android:gravity="end"
                         tools:text="Memoreza Sabana"
                         android:textSize="@dimen/fontsize15" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
@@ -132,9 +133,9 @@
                         android:gravity="end"
                         tools:text="XRPL3"
                         android:textSize="@dimen/fontsize15" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
@@ -159,9 +160,9 @@
                         android:gravity="end"
                         tools:text="2021"
                         android:textSize="@dimen/fontsize15" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
@@ -186,9 +187,9 @@
                         android:gravity="end"
                         tools:text="Desember"
                         android:textSize="@dimen/fontsize15" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2">
@@ -213,7 +214,7 @@
                         android:gravity="end"
                         tools:text="Memoreza"
                         android:textSize="@dimen/fontsize15" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -221,7 +222,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="450dp"
             android:layout_marginHorizontal="14dp"
             app:cardCornerRadius="10dp">
 
@@ -232,7 +233,7 @@
                 android:orientation="vertical"
                 android:layout_marginBottom="14dp">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -258,7 +259,7 @@
                         android:gravity="end"
                         tools:text="Rp200.000"
                         android:textSize="@dimen/fontsize23" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </FrameLayout>

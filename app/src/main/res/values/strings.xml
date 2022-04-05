@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aplikasi Pembayaran Sekolah</string>
+    <string name="app_name">MokletPay</string>
     //Headings OnBoarding
     <string name="heading_one">Program Administrasi</string>
     <string name="heading_two">Data Tervalidasi</string>

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.admintransaksi.SiswaPembayaran;
-import com.projectukk.project_mokletpay.auth.ProfilPetugasActivity;
+import com.projectukk.project_mokletpay.auth.ProfilPetugasaActivity;
 import com.projectukk.project_mokletpay.helper.SessionManager;
 
 import java.io.File;
@@ -41,7 +41,7 @@ public class MainPetugas extends AppCompatActivity {
             logoutUser();
         });
         findViewById(R.id.cv1).setOnClickListener(v -> {
-            Intent x = new Intent(MainPetugas.this, ProfilPetugasActivity.class);
+            Intent x = new Intent(MainPetugas.this, ProfilPetugasaActivity.class);
             x.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             x.putExtra("idsiswa", iduser);
             startActivity(x);

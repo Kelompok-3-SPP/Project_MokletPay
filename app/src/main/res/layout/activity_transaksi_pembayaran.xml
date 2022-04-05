@@ -11,33 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary">
-
-            <ImageView
-                android:id="@+id/back"
-                android:layout_width="35dp"
-                android:layout_height="50dp"
-                android:padding="5dp"
-                android:src="@drawable/ic_back"
-                app:tint="@color/white"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/et_cari"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/back"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical"
-                android:textColor="@color/white"
-                android:textSize="@dimen/fontsize18"
-                tools:ignore="Autofill,HardcodedText,TextFields"
-                tools:text="Anggota Sistem" />
-        </RelativeLayout>
+        <include layout="@layout/custom_layout_toolbar" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"

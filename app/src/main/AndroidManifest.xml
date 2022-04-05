@@ -19,17 +19,18 @@
         android:theme="@style/Theme.AplikasiPembayaranSekolah"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".transaksi.MenuPembayaran"
+            android:name=".auth.ProfilAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".auth.BioAdminActivity"
+            android:name=".auth.ProfilPetugasaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".transaksi.MenuPembayaran"
             android:exported="true" />
         <activity
             android:name=".admintransaksi.TambahAkun"
             android:exported="true" />
-        <activity
-            android:name=".model.AdminModel"
-            android:exported="true" />
+
         <activity
             android:name=".admintransaksi.ListAdmin"
             android:exported="true" />
@@ -64,9 +65,6 @@
             android:name=".admintransaksi.RekapitulasiAdminActivity"
             android:exported="true" />
         <activity
-            android:name=".admintransaksi.DetailApprovalActivity"
-            android:exported="false" />
-        <activity
             android:name=".admintransaksi.ApprovalActivity"
             android:exported="false" />
         <activity
@@ -76,16 +74,7 @@
             android:name=".transaksi.DetailTransaksi"
             android:exported="true" />
         <activity
-            android:name=".transaksi.TambahPembayaranTransaksiInvoice"
-            android:exported="false" />
-        <activity
             android:name=".siswa.ListSemuaSiswaAdmin"
-            android:exported="false" />
-        <activity
-            android:name=".akun.UpdateAkunActivity"
-            android:exported="false" />
-        <activity
-            android:name=".akun.ListAkunActivity"
             android:exported="false" />
         <activity
             android:name=".transaksi.TambahPembayaranTransaksi"
@@ -103,25 +92,13 @@
             android:name=".transaksi.TransaksiPembayaran"
             android:exported="false" />
         <activity
-            android:name=".auth.InformasiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".auth.ProfilActivity"
-            android:exported="false" />
-        <activity
             android:name=".siswa.ListSiswa"
-            android:exported="false" />
-        <activity
-            android:name=".kelas.UpdateKelas"
             android:exported="false" />
         <activity
             android:name=".kelas.TambahKelas"
             android:exported="false" />
         <activity
             android:name=".kelas.MainKelas"
-            android:exported="false" />
-        <activity
-            android:name=".siswa.UpdateSiswa"
             android:exported="false" />
         <activity
             android:name=".siswa.TambahSiswa"

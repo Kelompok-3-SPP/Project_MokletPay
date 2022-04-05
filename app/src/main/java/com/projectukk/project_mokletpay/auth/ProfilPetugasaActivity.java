@@ -19,7 +19,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
@@ -29,20 +28,18 @@ import com.projectukk.project_mokletpay.helper.utils.CustomProgressbar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ProfilActivity extends AppCompatActivity {
+public class ProfilPetugasaActivity extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
 
     private LinearLayout ly00, ly11;
-    private EditText et_nama, et_username, et_pass;
-    private TextView text_pass;
-    private TextInputLayout text_pass2;
+    private EditText et_nama, et_username;
     String idsiswa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil);
+        setContentView(R.layout.activity_profil_petugas);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
@@ -55,9 +52,6 @@ public class ProfilActivity extends AppCompatActivity {
         ly11 = findViewById(R.id.ly11);
         et_nama = findViewById(R.id.et_nama);
         et_username = findViewById(R.id.et_username);
-        et_pass = findViewById(R.id.et_pass);
-        text_pass = findViewById(R.id.text_pass);
-        text_pass2 = findViewById(R.id.text_pass2);
 
         ly00.setVisibility(View.VISIBLE);
         ly11.setVisibility(View.GONE);
@@ -68,23 +62,13 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void actionButton() {
         findViewById(R.id.back).setOnClickListener(v -> finish());
-        text_pass.setOnClickListener(v -> {
-            text_pass.setVisibility(View.GONE);
-            text_pass2.setVisibility(View.VISIBLE);
-        });
-        findViewById(R.id.text_simpan).setOnClickListener(v -> {
-            if (koneksi.isConnected(ProfilActivity.this)){
-                UpdateData();
-            } else {
-                CustomDialog.noInternet(ProfilActivity.this);
-            }
-        });
+
     }
 
     private void LoadData() {
         customProgress.showProgress(this, false);
-        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
-                .addQueryParameter("TAG", "detail")
+        AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
+                .addQueryParameter("TAG", "detail_petugasa")
                 .addQueryParameter("idsiswa", idsiswa)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -92,7 +76,7 @@ public class ProfilActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         et_nama.setText(response.optString("nama"));
-                        et_username.setText(response.optString("nis"));
+                        et_username.setText(response.optString("notelp"));
 
                         ly00.setVisibility(View.GONE);
                         ly11.setVisibility(View.VISIBLE);
@@ -105,28 +89,27 @@ public class ProfilActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(ProfilActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(ProfilPetugasaActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(ProfilActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(ProfilPetugasaActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });
     }
 
     private void UpdateData() {
-        AndroidNetworking.get(Connection.CONNECT + "spp_siswa.php")
-                .addQueryParameter("TAG", "edit")
+        AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
+                .addQueryParameter("TAG", "edit_petugas")
                 .addQueryParameter("idsiswa", idsiswa)
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
-                .addQueryParameter("password", et_pass.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        successDialog(ProfilActivity.this, response.optString("pesan"));
+                        successDialog(ProfilPetugasaActivity.this, response.optString("pesan"));
                     }
 
                     @Override
@@ -135,11 +118,11 @@ public class ProfilActivity extends AppCompatActivity {
                         if (error.getErrorCode() == 400) {
                             try {
                                 JSONObject body = new JSONObject(error.getErrorBody());
-                                CustomDialog.errorDialog(ProfilActivity.this, body.optString("pesan"));
+                                CustomDialog.errorDialog(ProfilPetugasaActivity.this, body.optString("pesan"));
                             } catch (JSONException ignored) {
                             }
                         } else {
-                            CustomDialog.errorDialog(ProfilActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                            CustomDialog.errorDialog(ProfilPetugasaActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
                         }
                     }
                 });

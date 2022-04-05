@@ -19,7 +19,6 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.google.android.material.textfield.TextInputLayout;
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
@@ -34,9 +33,7 @@ public class ProfilPetugasActivity extends AppCompatActivity {
     CekKoneksi koneksi = new CekKoneksi();
 
     private LinearLayout ly00, ly11;
-    private EditText et_nama, et_username, et_pass;
-    private TextView text_pass;
-    private TextInputLayout text_pass2;
+    private EditText et_nama, et_username;
     String idpetugas;
 
     @Override
@@ -55,9 +52,6 @@ public class ProfilPetugasActivity extends AppCompatActivity {
         ly11 = findViewById(R.id.ly11);
         et_nama = findViewById(R.id.et_nama);
         et_username = findViewById(R.id.et_username);
-        et_pass = findViewById(R.id.et_pass);
-        text_pass = findViewById(R.id.text_pass);
-        text_pass2 = findViewById(R.id.text_pass2);
 
         ly00.setVisibility(View.VISIBLE);
         ly11.setVisibility(View.GONE);
@@ -68,17 +62,14 @@ public class ProfilPetugasActivity extends AppCompatActivity {
 
     private void actionButton() {
         findViewById(R.id.back).setOnClickListener(v -> finish());
-        text_pass.setOnClickListener(v -> {
-            text_pass.setVisibility(View.GONE);
-            text_pass2.setVisibility(View.VISIBLE);
-        });
-        findViewById(R.id.text_simpan).setOnClickListener(v -> {
+        findViewById(R.id.text_hapus).setOnClickListener(v -> {
             if (koneksi.isConnected(ProfilPetugasActivity.this)){
-                UpdateData();
+                HapusData(idpetugas);
             } else {
                 CustomDialog.noInternet(ProfilPetugasActivity.this);
             }
         });
+
     }
 
     private void LoadData() {
@@ -120,12 +111,41 @@ public class ProfilPetugasActivity extends AppCompatActivity {
                 .addQueryParameter("TAG", "edit_petugas")
                 .addQueryParameter("idsiswa", idpetugas)
                 .addQueryParameter("nama", et_nama.getText().toString().trim())
-                .addQueryParameter("password", et_pass.getText().toString().trim())
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        successDialog(ProfilPetugasActivity.this, response.optString("pesan"));
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        customProgress.hideProgress();
+                        if (error.getErrorCode() == 400) {
+                            try {
+                                JSONObject body = new JSONObject(error.getErrorBody());
+                                CustomDialog.errorDialog(ProfilPetugasActivity.this, body.optString("pesan"));
+                            } catch (JSONException ignored) {
+                            }
+                        } else {
+                            CustomDialog.errorDialog(ProfilPetugasActivity.this, "Sambunganmu dengan server terputus. Periksa sambungan internet, lalu coba lagi.");
+                        }
+                    }
+                });
+    }
+
+    private void HapusData(String idpetugas) {
+        customProgress.showProgress(this, false);
+        AndroidNetworking.get(Connection.CONNECT + "spp_akun.php")
+                .addQueryParameter("TAG", "hapus_petugas")
+                .addQueryParameter("idpetugas", idpetugas)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        customProgress.hideProgress();
                         successDialog(ProfilPetugasActivity.this, response.optString("pesan"));
                     }
 

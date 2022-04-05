@@ -1,16 +1,30 @@
 package com.projectukk.project_mokletpay.admintransaksi;
 
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +33,14 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.projectukk.project_mokletpay.R;
 import com.projectukk.project_mokletpay.helper.Connection;
 import com.projectukk.project_mokletpay.helper.utils.CekKoneksi;
@@ -29,18 +51,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class RekapitulasiAdminActivity extends AppCompatActivity {
     CustomProgressbar customProgress = CustomProgressbar.getInstance();
     CekKoneksi koneksi = new CekKoneksi();
     private TextView et_cari;
     private EditText et_tahun, et_bulan;
-    private TextView text_siswa, text_transaksi, text_total;
+    private TextView text_siswa, text_transaksi, text_total, text_tahun, text_bulan;
 
     ArrayList<HashMap<String, String>> dataTahun = new ArrayList<>();
     ArrayList<HashMap<String, String>> dataBulan = new ArrayList<>();
+
+    String fName = String.valueOf(System.currentTimeMillis());
 
     String jumlah_transaksi, jumlah_siswa, total_pembayaran_format;
 
@@ -59,6 +88,8 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
         text_siswa = findViewById(R.id.text_siswa);
         text_transaksi = findViewById(R.id.text_transaksi);
         text_total = findViewById(R.id.text_total);
+        text_tahun = findViewById(R.id.text_tahun);
+        text_bulan = findViewById(R.id.text_bulan);
 
         LoadLaporan();
         LoadProvinsi();
@@ -70,14 +101,26 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
             popup_bulan();
         });
 
-        findViewById(R.id.text_tutup).setOnClickListener(view -> {
-            finish();
-        });
         findViewById(R.id.text_simpan).setOnClickListener(v -> {
             if(koneksi.isConnected(RekapitulasiAdminActivity.this)){
                 LoadLaporan();
             } else {
                 CustomDialog.noInternet(RekapitulasiAdminActivity.this);
+            }
+        });
+
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
+        findViewById(R.id.unduhButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+//                layoutToImage();
+
+                layoutTOimageConverter();
             }
         });
     }
@@ -131,6 +174,7 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
         lv_kategori.setOnItemClickListener((parent, view, position, id) -> {
             String nama_kategori = ((TextView) view.findViewById(R.id.text_nama)).getText().toString();
             et_tahun.setText(nama_kategori);
+
             LoadBulan(nama_kategori);
             alertDialog.dismiss();
         });
@@ -212,9 +256,11 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
                         jumlah_siswa = response.optString("jumlah_siswa");
                         total_pembayaran_format = response.optString("total_pembayaran_format");
 
-                        text_siswa.setText(jumlah_siswa + "Siswa");
-                        text_transaksi.setText(jumlah_transaksi + "Transaksi");
+                        text_siswa.setText(jumlah_siswa + " Siswa");
+                        text_transaksi.setText(jumlah_transaksi + " Transaksi");
                         text_total.setText(total_pembayaran_format);
+                        text_tahun.setText(et_tahun.getText().toString().trim());
+                        text_bulan.setText(et_bulan.getText().toString().trim());
                     }
 
                     @Override
@@ -222,5 +268,130 @@ public class RekapitulasiAdminActivity extends AppCompatActivity {
                         customProgress.hideProgress();
                     }
                 });
+    }
+
+    private void layoutTOimageConverter() {
+
+
+        Dexter.withContext(this).withPermissions(WRITE_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        if (report.areAllPermissionsGranted()) {
+
+//                            ConstraintLayout layout = findViewById(R.id.lay);
+
+//                            ScrollView layout = findViewById(R.id.sView);
+                            LinearLayout layout  = findViewById(R.id.cetaklaporan);
+
+
+                            File file = saveBitMap(RekapitulasiAdminActivity.this, layout);    //which view you want to pass that view as parameter
+                            if (file != null) {
+                                Log.i("TAG", "Drawing saved to the gallery!");
+                                Toast.makeText(RekapitulasiAdminActivity.this, "Mengunduh", Toast.LENGTH_SHORT).show();
+
+
+                                try {
+                                    imageToPDF();
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            } else {
+                                Log.i("TAG", "Oops! Image could not be saved.");
+                                Toast.makeText(RekapitulasiAdminActivity.this, "Click Again !", Toast.LENGTH_SHORT).show();
+
+                            }
+
+
+                        } else {
+                            Toast.makeText(RekapitulasiAdminActivity.this, "Permissions are not granted!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).check();
+
+
+    }
+
+    public void imageToPDF() throws FileNotFoundException {
+        try {
+            Document document = new Document();
+            String dirpath = android.os.Environment.getExternalStorageDirectory().toString();
+            PdfWriter.getInstance(document, new FileOutputStream(dirpath + "/"+fName+".pdf")); //  Change pdf's name.
+            document.open();
+            Image img = Image.getInstance(Environment.getExternalStorageDirectory() + File.separator +"/Pictures/Download/"+ fName+".jpg");
+            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                    - document.rightMargin() - 0) / img.getWidth()) * 100;
+            img.scalePercent(scaler);
+            img.setAlignment(Image.ALIGN_CENTER | Image.ALIGN_TOP);
+            document.add(img);
+            document.close();
+            Toast.makeText(this, "Berhasil mengunduh", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+
+        }
+    }
+
+    private File saveBitMap(Context context, View drawView) {
+        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Download"); // enter folder name to save image
+        if (!pictureFileDir.exists()) {
+            boolean isDirectoryCreated = pictureFileDir.mkdirs();
+            if (!isDirectoryCreated)
+                Log.i("ATG", "Can't create directory to save the image");
+            return null;
+        }
+        String filename = pictureFileDir.getPath() + File.separator +fName + ".jpg";
+        File pictureFile = new File(filename);
+        Bitmap bitmap = getBitmapFromView(drawView);
+        try {
+            pictureFile.createNewFile();
+            FileOutputStream oStream = new FileOutputStream(pictureFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, oStream);
+            oStream.flush();
+            oStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("TAG", "There was an issue saving the image.");
+        }
+        scanGallery(context, pictureFile.getAbsolutePath());
+        return pictureFile;
+    }
+
+    //create bitmap from view and returns it
+    private Bitmap getBitmapFromView(View view) {
+        //Define a bitmap with the same size as the view
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        //Bind a canvas to it
+        Canvas canvas = new Canvas(returnedBitmap);
+        //Get the view's background
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null) {
+            //has background drawable, then draw it on the canvas
+            bgDrawable.draw(canvas);
+        } else {
+            //does not have background drawable, then draw white background on the canvas
+            canvas.drawColor(Color.WHITE);
+        }
+        // draw the view on the canvas
+        view.draw(canvas);
+        //return the bitmap
+        return returnedBitmap;
+    }
+
+    private void scanGallery(Context cntx, String path) {
+        try {
+            MediaScannerConnection.scanFile(cntx, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                public void onScanCompleted(String path, Uri uri) {
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
